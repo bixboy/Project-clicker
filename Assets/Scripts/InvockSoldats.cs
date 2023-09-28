@@ -12,7 +12,7 @@ namespace spawn
     {
 
         // Field 
-        [SerializeField] GameObject _prefabSoldats;
+        [SerializeField] GameObject _prefabSoldiers;
         GameObject spawnPoint;
 
         // Methodes
@@ -33,7 +33,7 @@ namespace spawn
         void spawn()
         {
             Transform spawnPointTransform = spawnPoint.transform;
-            Instantiate(_prefabSoldats, spawnPointTransform.position, spawnPointTransform.rotation);
+            Instantiate(_prefabSoldiers, spawnPointTransform.position, spawnPointTransform.rotation);
         }
 
         [Button] void spawn1() => spawn();
