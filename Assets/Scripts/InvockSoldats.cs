@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 namespace spawn
@@ -12,7 +13,7 @@ namespace spawn
 
         // Field 
         [SerializeField] GameObject _prefabSoldats;
-        public GameObject spawnPoint;
+        GameObject spawnPoint;
 
         // Methodes
         #region EditorParametre
@@ -31,7 +32,8 @@ namespace spawn
 
         void spawn()
         {
-            
+            Transform spawnPointTransform = spawnPoint.transform;
+            Instantiate(_prefabSoldats, spawnPointTransform.position, spawnPointTransform.rotation);
         }
 
         [Button] void spawn1() => spawn();
