@@ -93,8 +93,11 @@ public class EnemyLife : MonoBehaviour
         _isDie = true;
         _currentHealth = 0;
 
-        var soldats = GameObject.FindGameObjectWithTag("Soldiers");
-        soldats.GetComponent<MoveSoldats>()._destActif = false;
+        GameObject[] soldats = GameObject.FindGameObjectsWithTag("Soldiers");
+        foreach (GameObject soldat in soldats)
+        {
+            soldat.GetComponent<MoveSoldats>()._destActif = false;
+        }
 
         Debug.Log("Die");
 
