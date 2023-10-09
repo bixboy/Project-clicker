@@ -69,7 +69,7 @@ public class EnemyLife : MonoBehaviour
         Debug.Log("Heal");
     }
 
-    void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         // Guards
         if (amount < 0)
@@ -77,7 +77,7 @@ public class EnemyLife : MonoBehaviour
             throw new ArgumentException("Mauvaise valeur, valeur négative");
         }
 
-        _currentHealth -= amount;
+        // _currentHealth -= amount;
 
         _currentHealth = Math.Clamp(_currentHealth - amount, 0, _maxHealth);
 

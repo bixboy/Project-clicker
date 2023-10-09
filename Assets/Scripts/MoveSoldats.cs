@@ -8,9 +8,14 @@ public class MoveSoldats : MonoBehaviour
     [SerializeField] float _moveSpeed;
     [SerializeField] float _distStop;
 
-    [SerializeField] LayerMask _layerMask;
+    [SerializeField] LayerMask _layerMask; 
+
+    [SerializeField] int _cooldown;
+    [SerializeField] int _damage;
+    bool _canAttack = false;
 
     public bool _destActif = false;
+    bool _stopMove = false;
     Transform _destPoint;
 
     private void Update()
@@ -20,12 +25,24 @@ public class MoveSoldats : MonoBehaviour
             float _distance = Vector2.Distance(transform.position, _destPoint.position);
             if (_distance > _distStop)
             {
+                _stopMove = false;
                 transform.position = Vector2.MoveTowards(transform.position, _destPoint.position, _moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                _stopMove = true;
             }
         }
         else
         {
             findDestPoint();
+        }
+
+        if (_stopMove && !_canAttack)
+        {
+            StartCoroutine(cooldown());
+            _canAttack = true;
+            Debug.Log("oui1");
         }
     }
 
@@ -38,6 +55,21 @@ public class MoveSoldats : MonoBehaviour
             _destPoint = rayHit.transform;
             Debug.Log(_destPoint);
             _destActif = true;
+        }
+    }
+
+    private IEnumerator cooldown()
+    {
+        yield return new WaitForSeconds(_cooldown);
+        attack();
+    }
+
+    void attack()
+    {
+        if (_canAttack)
+        {
+            _destPoint.GetComponent<EnemyLife>().TakeDamage(_damage);
+            _canAttack = false;
         }
     }
 }
