@@ -93,7 +93,17 @@ public class EnemyLife : MonoBehaviour
         _isDie = true;
         _currentHealth = 0;
 
+        var soldats = GameObject.FindGameObjectWithTag("Soldiers");
+        soldats.GetComponent<MoveSoldats>()._destActif = false;
+
         Debug.Log("Die");
+
+        destroyEnemy();
+    }
+
+    void destroyEnemy()
+    {
+        Destroy(gameObject);
     }
 
     [Button] void coucou() => TakeDamage(10);

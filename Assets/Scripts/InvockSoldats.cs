@@ -13,14 +13,14 @@ namespace spawn
 
         // Field 
         [SerializeField] GameObject _prefabSoldiers;
-        GameObject spawnPoint;
+        GameObject _spawnPoint;
 
         // Methodes
         #region EditorParametre
 
         private void Start()
         {
-            spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+            _spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         }
 
         private void Reset()
@@ -32,7 +32,7 @@ namespace spawn
 
         void spawn()
         {
-            Transform spawnPointTransform = spawnPoint.transform;
+            Transform spawnPointTransform = _spawnPoint.transform;
             Instantiate(_prefabSoldiers, spawnPointTransform.position, spawnPointTransform.rotation);
         }
 
