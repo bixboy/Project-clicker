@@ -4,43 +4,54 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] int _damage;
-    GameObject _soldats;
+    [SerializeField] private int _damage;
+    private List<SoldiersLife> _soldats;
 
-    [SerializeField] int _cooldown;
-    bool canAttack = true;
+    [SerializeField] private float _cooldownTime;
+    private float _lastAttackTime;
+
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D collision)
+
+    private void Awake()
+    {
+        _soldats= new List<SoldiersLife>();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Soldiers"))
         {
-            StartCoroutine(cooldown());
-            if(canAttack)
-            {
-                _soldats = collision.gameObject.GetComponent<GameObject>();
-                attack(_damage);
-                canAttack = false;
-            }
+            _soldats.Add(collision.GetComponent<SoldiersLife>());
+        }
+    }
+
+    private void Update()
+    {
+        if (_lastAttackTime + _cooldownTime < Time.time)
+        {
+            Attack();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Soldiers"))
+        if(collision.gameObject.CompareTag("Soldiers") && _soldats.Contains(collision.GetComponent<SoldiersLife>()))
         {
-            StopCoroutine(cooldown());
+            _soldats.Remove(collision.GetComponent<SoldiersLife>());
         }
     }
 
-    void attack(int damages)
+    private void Attack()
     {
-        _soldats.GetComponent<SoldiersLife>().TakeDamage(_damage);
-    }
-
-    private IEnumerator cooldown()
-    {
-        yield return new WaitForSeconds(_cooldown);
-        canAttack = true;
+        if (_soldats.Count == 0) { return; }
+        List<SoldiersLife> tempSoldats = _soldats;
+        int i = 0;
+        int j = 0;
+        while (i < _soldats.Count && j < 7)
+        {
+            if (!_soldats[i].TakeDamage(_damage)) { i++; } ;
+            j++;
+        }
+        _lastAttackTime = Time.time;
     }
 }

@@ -34,7 +34,7 @@ public class EnemyLife : MonoBehaviour
         _maxHealth = 100;
     }
 
-    bool ValidateMaxHealth()
+    private bool ValidateMaxHealth()
     {
         // Guards
         if (_maxHealth <= 0)
@@ -96,7 +96,7 @@ public class EnemyLife : MonoBehaviour
         GameObject[] soldats = GameObject.FindGameObjectsWithTag("Soldiers");
         foreach (GameObject soldat in soldats)
         {
-            soldat.GetComponent<MoveSoldats>()._destActif = false;
+            soldat.GetComponent<MoveSoldats>().SetDestinationActif(false);
         }
 
         Debug.Log("Die");

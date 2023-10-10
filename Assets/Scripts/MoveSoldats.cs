@@ -14,9 +14,11 @@ public class MoveSoldats : MonoBehaviour
     [SerializeField] int _damage;
     bool _canAttack = false;
 
-    public bool _destActif = false;
+    private bool _destActif = false;
     bool _stopMove = false;
     Transform _destPoint;
+
+    public void SetDestinationActif(bool isActif) => _destActif = isActif;
 
     private void Update()
     {
@@ -66,7 +68,7 @@ public class MoveSoldats : MonoBehaviour
 
     void attack()
     {
-        if (_canAttack)
+        if (_canAttack && _destPoint!=null)
         {
             _destPoint.GetComponent<EnemyLife>().TakeDamage(_damage);
             _canAttack = false;
