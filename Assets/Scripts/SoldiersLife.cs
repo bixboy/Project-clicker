@@ -68,7 +68,7 @@ public class SoldiersLife : MonoBehaviour
         Debug.Log("Heal");
     }
 
-    public void TakeDamage(int amount)
+    public bool TakeDamage(int amount)
     {
         // Guards
         if (amount < 0)
@@ -80,11 +80,12 @@ public class SoldiersLife : MonoBehaviour
 
         _currentHealth = Math.Clamp(_currentHealth - amount, 0, _maxHealth);
 
-        if (_currentHealth <= 0) Die();
-
         _onDamage.Invoke();
-
         Debug.Log("Damage");
+
+        if (_currentHealth <= 0) { Die(); return true; }
+        return false;
+
     }
 
     void Die()
