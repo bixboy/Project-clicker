@@ -1053,6 +1053,8 @@ MonoBehaviour:
   _displayedUpgrade: 0
   _upgradeName: {fileID: 3459948613599340433}
   _upgradeCost: {fileID: 2463922039989354476}
+  _currentAmount: {fileID: 75671417647276043}
+  _nextAmount: {fileID: 4618832829938650434}
   _upgradeSprite: {fileID: 7325589851389615231}
 --- !u!1 &8993627120704101523
 GameObject:
