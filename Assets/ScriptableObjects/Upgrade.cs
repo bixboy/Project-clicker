@@ -16,11 +16,10 @@ public class Upgrade : ScriptableObject
     public float Amount => _amount;
     public int Level => _level;
     public float value => _level * _amount;
-    public int Cost => _cost;
+    public int Cost => (int)(_cost * (0.2*_level + 1));
     public Sprite Sprite => _sprite;
     public void Buy()
     {
-        _cost *= 2;
         _level++;
     }
 
