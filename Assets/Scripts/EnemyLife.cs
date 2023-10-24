@@ -16,6 +16,7 @@ public class EnemyLife : MonoBehaviour
     private bool _isDie;
 
     [SerializeField] private UnityEvent _onDamage;
+    private Animator _animator;
 
     // Properties
     public int CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
@@ -27,6 +28,7 @@ public class EnemyLife : MonoBehaviour
     private void Start()
     {
         CurrentHealth = _maxHealth;
+        _animator = GetComponent<Animator>();
     }
 
     private void Reset()
@@ -101,8 +103,7 @@ public class EnemyLife : MonoBehaviour
         }
 
         Debug.Log("Die");
-
-        destroyEnemy();
+        _animator.SetTrigger("Die");
     }
 
     private void destroyEnemy()
