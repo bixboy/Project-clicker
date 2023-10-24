@@ -5,15 +5,17 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     private float length, startpos;
-    [SerializeField] GameObject _camera;
-    [SerializeField] float parallaxEffect;
-    void Start()
+    [SerializeField] private GameObject _camera;
+    [SerializeField] private float parallaxEffect;
+
+    private void Start()
     {
         startpos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
         if (_camera == null) { Debug.LogError("Missing camera"); }
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         float temp = _camera.transform.position.x * (1 - parallaxEffect);
         float dist = _camera.transform.position.x * parallaxEffect;

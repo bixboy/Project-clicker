@@ -1,11 +1,10 @@
 using NaughtyAttributes;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField, Expandable] List<Upgrade> _upgradeList;
+    [SerializeField, Expandable] private List<Upgrade> _upgradeList;
     [SerializeField] private int _coinAmount;
 
     public void CollectCoin(int amount) => _coinAmount += amount;

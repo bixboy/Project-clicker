@@ -8,23 +8,24 @@ using UnityEngine.Events;
 public class SoldiersLife : MonoBehaviour
 {
     // Field
-    [SerializeField, ValidateInput("ValidateMaxHealth")] int _maxHealth;
-    [SerializeField] int _currentHealth;
+    [SerializeField, ValidateInput("ValidateMaxHealth")]
+    private int _maxHealth;
+    [SerializeField] private int _currentHealth;
 
-    bool _isDie;
+    private bool _isDie;
+    private UpgradeManager _upgradeManager;
 
-    [SerializeField] UnityEvent _onDamage;
-
-    // Properties
-    public int CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
-
+    [SerializeField] private UnityEvent _onDamage;
 
     // Methodes
     #region EditorParametre
 
-    private void Start()
+    private void Awake()
     {
-        CurrentHealth = _maxHealth;
+        _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
+        _maxHealth = (int)_upgradeManager.GetUpgradeByName(StatName.health).Amount;
+        _currentHealth = _maxHealth;
+        
     }
 
     private void Reset()
@@ -33,13 +34,13 @@ public class SoldiersLife : MonoBehaviour
         _maxHealth = 100;
     }
 
-    bool ValidateMaxHealth()
+    private bool ValidateMaxHealth()
     {
         // Guards
         if (_maxHealth <= 0)
         {
             _maxHealth = 100;
-            Debug.LogWarning("Pas de HPMax négatif");
+            Debug.LogWarning("Pas de HPMax nï¿½gatif");
             return false;
         }
         return true;
@@ -48,21 +49,18 @@ public class SoldiersLife : MonoBehaviour
     #endregion
 
 
-    void Regen(int amount)
+    private void Regen(int amount)
     {
         // Guards
         if (amount < 0)
         {
-            throw new ArgumentException("Mauvaise valeur, valeur négative");
+            throw new ArgumentException("Mauvaise valeur, valeur nï¿½gative");
         }
 
         if (_isDie)
         {
             return;
         }
-
-        _currentHealth += amount;
-
         _currentHealth = Math.Clamp(_currentHealth + amount, 0, _maxHealth);
 
         Debug.Log("Heal");
@@ -73,7 +71,7 @@ public class SoldiersLife : MonoBehaviour
         // Guards
         if (amount < 0)
         {
-            throw new ArgumentException("Mauvaise valeur, valeur négative");
+            throw new ArgumentException("Mauvaise valeur, valeur nï¿½gative");
         }
 
         // _currentHealth -= amount;
@@ -88,7 +86,7 @@ public class SoldiersLife : MonoBehaviour
 
     }
 
-    void Die()
+    private void Die()
     {
         _isDie = true;
         _currentHealth = 0;
@@ -98,11 +96,13 @@ public class SoldiersLife : MonoBehaviour
         destroySoldat();
     }
 
-    void destroySoldat()
+    private void destroySoldat()
     {
         Destroy(gameObject);
     }
 
-    [Button] void coucou() => TakeDamage(10);
-    [Button] void coucou2() => Regen(5);
+    [Button]
+    private void coucou() => TakeDamage(10);
+    [Button]
+    private void coucou2() => Regen(5);
 }

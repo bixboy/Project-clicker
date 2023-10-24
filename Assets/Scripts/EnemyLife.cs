@@ -9,12 +9,13 @@ public class EnemyLife : MonoBehaviour
 {
 
     // Field
-    [SerializeField, ValidateInput("ValidateMaxHealth")] int _maxHealth;
-    [SerializeField] int _currentHealth;
+    [SerializeField, ValidateInput("ValidateMaxHealth")]
+    private int _maxHealth;
+    [SerializeField] private int _currentHealth;
 
-    bool _isDie;
+    private bool _isDie;
 
-    [SerializeField] UnityEvent _onDamage;
+    [SerializeField] private UnityEvent _onDamage;
 
     // Properties
     public int CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
@@ -40,7 +41,7 @@ public class EnemyLife : MonoBehaviour
         if (_maxHealth <= 0)
         {
             _maxHealth = 100;
-            Debug.LogWarning("Pas de HPMax négatif");
+            Debug.LogWarning("Pas de HPMax nÃ©gatif");
             return false;
         }
         return true;
@@ -49,12 +50,12 @@ public class EnemyLife : MonoBehaviour
     #endregion
 
 
-    void Regen(int amount)
+    private void Regen(int amount)
     {
         // Guards
         if (amount < 0)
         {
-            throw new ArgumentException("Mauvaise valeur, valeur négative");
+            throw new ArgumentException("Mauvaise valeur, valeur nÃ©gative");
         }
 
         if (_isDie)
@@ -74,7 +75,7 @@ public class EnemyLife : MonoBehaviour
         // Guards
         if (amount < 0)
         {
-            throw new ArgumentException("Mauvaise valeur, valeur négative");
+            throw new ArgumentException("Mauvaise valeur, valeur nÃ©gative");
         }
 
         // _currentHealth -= amount;
@@ -88,7 +89,7 @@ public class EnemyLife : MonoBehaviour
         Debug.Log("Damage");
     }
 
-    void Die()
+    private void Die()
     {
         _isDie = true;
         _currentHealth = 0;
@@ -104,12 +105,14 @@ public class EnemyLife : MonoBehaviour
         destroyEnemy();
     }
 
-    void destroyEnemy()
+    private void destroyEnemy()
     {
         Destroy(gameObject);
     }
 
-    [Button] void coucou() => TakeDamage(10);
-    [Button] void coucou2() => Regen(5);
+    [Button]
+    private void coucou() => TakeDamage(10);
+    [Button]
+    private void coucou2() => Regen(5);
 
 }
