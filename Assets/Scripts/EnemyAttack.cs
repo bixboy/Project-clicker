@@ -10,6 +10,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _cooldownTime;
     private float _lastAttackTime;
     private Animator _animator;
+    private EnemyLife _enemyLife;
 
 
     // Update is called once per frame
@@ -18,6 +19,7 @@ public class EnemyAttack : MonoBehaviour
     {
         _soldats= new List<SoldiersLife>();
         _animator = GetComponent<Animator>();
+        _enemyLife = GetComponent<EnemyLife>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,7 +31,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_lastAttackTime + _cooldownTime < Time.time)
+        if (_lastAttackTime + _cooldownTime < Time.time && !_enemyLife)
         {
             Attack();
         }

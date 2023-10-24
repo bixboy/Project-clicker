@@ -14,6 +14,7 @@ public class EnemyLife : MonoBehaviour
     [SerializeField] private int _currentHealth;
 
     private bool _isDie;
+    public bool IsDie => _isDie;
 
     [SerializeField] private UnityEvent _onDamage;
     private Animator _animator;
@@ -88,7 +89,7 @@ public class EnemyLife : MonoBehaviour
 
         _onDamage.Invoke();
 
-        Debug.Log("Damage");
+        Debug.Log("Damage to enemy");
     }
 
     private void Die()
@@ -108,6 +109,7 @@ public class EnemyLife : MonoBehaviour
 
     private void destroyEnemy()
     {
+        Debug.Log("Destroy");
         Destroy(gameObject);
     }
 

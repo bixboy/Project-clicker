@@ -16,9 +16,13 @@ public class MoveSoldats : MonoBehaviour
     private bool _canAttack = false;
     private UpgradeManager _upgradeManager;
 
+    [SerializeField]
     private bool _destActive = false;
     private bool _stopMove = false;
     private Transform _destPoint;
+    private Animator _animator;
+
+    private bool _firstAttack = true;
 
     public void SetDestinationActif(bool isActive) => _destActive = isActive;
 
@@ -27,20 +31,23 @@ public class MoveSoldats : MonoBehaviour
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _damage = (int)_upgradeManager.GetUpgradeByName(StatName.AttackDamage).Amount;
         _cooldown = _baseCooldown / _upgradeManager.GetUpgradeByName(StatName.AttackSpeed).Amount;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (_destActive)
+        if (_destActive && _destPoint != null)
         {
             float distance = Vector2.Distance(transform.position, _destPoint.position);
             if (distance > _distStop)
             {
                 _stopMove = false;
+                _animator.SetBool("Move", true);
                 transform.position = Vector2.MoveTowards(transform.position, _destPoint.position, _moveSpeed * Time.deltaTime);
             }
             else
             {
+                _animator.SetBool("Move", false);
                 _stopMove = true;
             }
         }
@@ -76,6 +83,16 @@ public class MoveSoldats : MonoBehaviour
     {
         if (_canAttack && _destPoint!=null)
         {
+            if (_firstAttack) 
+            {
+                _animator.SetTrigger("Attack");
+                _firstAttack = false;
+            }
+            else
+            {
+                _animator.SetTrigger("SecondAttack");
+                _firstAttack = true;
+            }
             bool crit = Random.Range(0, 100) < (int)_upgradeManager.GetUpgradeByName(StatName.CritChance).Amount;
             _destPoint.GetComponent<EnemyLife>().TakeDamage(crit? _damage : _damage*2);
             _canAttack = false;
