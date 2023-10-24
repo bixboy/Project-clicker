@@ -177,9 +177,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
-  _cooldown: 3
+  _baseCooldown: 3
   _damage: 10
-  _destActif: 0
 --- !u!114 &6990822093990025071
 MonoBehaviour:
   m_ObjectHideFlags: 0
