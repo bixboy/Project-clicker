@@ -32,9 +32,9 @@ public class UpgradeUI : MonoBehaviour
         _upgradeSprite.sprite = _upgrade.Sprite;
     }
 
-    public void Buy(StatName statName)
+    public void Buy()
     {
-        _upgradeManager.Buy(statName);
+        _upgradeManager.Buy(_displayedUpgrade);
         UpdateUI();
     }
 
