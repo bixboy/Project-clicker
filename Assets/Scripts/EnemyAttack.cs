@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
 
     [SerializeField] private float _cooldownTime;
     private float _lastAttackTime;
+    private Animator _animator;
 
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class EnemyAttack : MonoBehaviour
     private void Awake()
     {
         _soldats= new List<SoldiersLife>();
+        _animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,6 +51,7 @@ public class EnemyAttack : MonoBehaviour
         int j = 0;
         while (i < _soldats.Count && j < 7)
         {
+            _animator.SetTrigger("Attack");
             if (!_soldats[i].TakeDamage(_damage)) { i++; } ;
             j++;
         }
