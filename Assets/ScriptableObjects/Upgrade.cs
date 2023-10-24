@@ -15,7 +15,7 @@ public class Upgrade : ScriptableObject
     public StatName Name => _statName;
     public float Amount => _amount;
     public int Level => _level;
-    public float value => _level * _amount;
+    public float value => _amount + _level * _amount;
     public int Cost => (int)(_cost * (0.2*_level + 1));
     public Sprite Sprite => _sprite;
     public void Buy()

@@ -10,7 +10,8 @@ public class MoveSoldats : MonoBehaviour
 
     [SerializeField] private LayerMask _layerMask; 
 
-    [SerializeField] private float _cooldown;
+    [SerializeField] private float _baseCooldown;
+    private float _cooldown;
     [SerializeField] private int _damage;
     private bool _canAttack = false;
     private UpgradeManager _upgradeManager;
@@ -25,7 +26,7 @@ public class MoveSoldats : MonoBehaviour
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _damage = (int)_upgradeManager.GetUpgradeByName(StatName.AttackDamage).Amount;
-        _cooldown = _cooldown / _upgradeManager.GetUpgradeByName(StatName.AttackSpeed).Amount;
+        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeByName(StatName.AttackSpeed).Amount;
     }
 
     private void Update()
