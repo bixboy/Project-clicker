@@ -1,31 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MoveSoldats : MonoBehaviour
 {
 
-    [SerializeField] float _moveSpeed;
-    [SerializeField] float _distStop;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _distStop;
 
-    [SerializeField] LayerMask _layerMask; 
+    [SerializeField] private LayerMask _layerMask; 
 
-    [SerializeField] int _cooldown;
-    [SerializeField] int _damage;
-    bool _canAttack = false;
+    [SerializeField] private float _cooldown;
+    [SerializeField] private int _damage;
+    private bool _canAttack = false;
+    private UpgradeManager _upgradeManager;
 
-    private bool _destActif = false;
-    bool _stopMove = false;
-    Transform _destPoint;
+    private bool _destActive = false;
+    private bool _stopMove = false;
+    private Transform _destPoint;
 
-    public void SetDestinationActif(bool isActif) => _destActif = isActif;
+    public void SetDestinationActif(bool isActive) => _destActive = isActive;
+
+    private void Awake()
+    {
+        _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
+        _damage = (int)_upgradeManager.GetUpgradeByName(StatName.AttackDamage).Amount;
+        _cooldown = _cooldown / _upgradeManager.GetUpgradeByName(StatName.AttackSpeed).Amount;
+    }
 
     private void Update()
     {
-        if (_destActif)
+        if (_destActive)
         {
-            float _distance = Vector2.Distance(transform.position, _destPoint.position);
-            if (_distance > _distStop)
+            float distance = Vector2.Distance(transform.position, _destPoint.position);
+            if (distance > _distStop)
             {
                 _stopMove = false;
                 transform.position = Vector2.MoveTowards(transform.position, _destPoint.position, _moveSpeed * Time.deltaTime);
@@ -37,40 +45,38 @@ public class MoveSoldats : MonoBehaviour
         }
         else
         {
-            findDestPoint();
+            FindDestPoint();
         }
 
         if (_stopMove && !_canAttack)
         {
-            StartCoroutine(cooldown());
+            StartCoroutine(Cooldown());
             _canAttack = true;
             Debug.Log("oui1");
         }
     }
 
-    void findDestPoint()
+    private void FindDestPoint()
     {
-        RaycastHit2D rayHit;
-
-        if (rayHit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), Mathf.Infinity, _layerMask))
-        {
-            _destPoint = rayHit.transform;
-            Debug.Log(_destPoint);
-            _destActif = true;
-        }
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), Mathf.Infinity, _layerMask);
+        if (!rayHit) return;
+        _destPoint = rayHit.transform;
+        Debug.Log(_destPoint);
+        _destActive = true;
     }
 
-    private IEnumerator cooldown()
+    private IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(_cooldown);
-        attack();
+        Attack();
     }
 
-    void attack()
+    private void Attack()
     {
         if (_canAttack && _destPoint!=null)
         {
-            _destPoint.GetComponent<EnemyLife>().TakeDamage(_damage);
+            bool crit = Random.Range(0, 100) < (int)_upgradeManager.GetUpgradeByName(StatName.CritChance).Amount;
+            _destPoint.GetComponent<EnemyLife>().TakeDamage(crit? _damage : _damage*2);
             _canAttack = false;
         }
     }

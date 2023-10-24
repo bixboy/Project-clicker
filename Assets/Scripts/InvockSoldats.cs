@@ -12,8 +12,8 @@ namespace spawn
     {
 
         // Field 
-        [SerializeField] GameObject _prefabSoldiers;
-        GameObject _spawnPoint;
+        [SerializeField] private GameObject _prefabSoldiers;
+        private GameObject _spawnPoint;
 
         // Methodes
         #region EditorParametre
@@ -30,13 +30,14 @@ namespace spawn
 
         #endregion
 
-        void spawn()
+        private void spawn()
         {
             Transform spawnPointTransform = _spawnPoint.transform;
             Instantiate(_prefabSoldiers, spawnPointTransform.position, spawnPointTransform.rotation);
         }
 
-        [Button] void spawn1() => spawn();
+        [Button]
+        private void spawn1() => spawn();
     }
 }
 
