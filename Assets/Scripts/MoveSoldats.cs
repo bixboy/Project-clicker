@@ -56,7 +56,7 @@ public class MoveSoldats : MonoBehaviour
             FindDestPoint();
         }
 
-        if (_stopMove && !_canAttack)
+        if (_stopMove && !_canAttack && this.CompareTag("Soldiers"))
         {
             StartCoroutine(Cooldown());
             _canAttack = true;
@@ -81,7 +81,7 @@ public class MoveSoldats : MonoBehaviour
 
     private void Attack()
     {
-        if (_canAttack && _destPoint!=null)
+        if (_canAttack && _destPoint!=null && this.CompareTag("Soldiers"))
         {
             if (_firstAttack) 
             {

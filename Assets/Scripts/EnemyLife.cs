@@ -14,6 +14,7 @@ public class EnemyLife : MonoBehaviour
     [SerializeField] private int _currentHealth;
 
     private bool _isDie;
+    private bool _isDieFirst = true;
     public bool IsDie => _isDie;
 
     [SerializeField] private UnityEvent _onDamage;
@@ -104,7 +105,11 @@ public class EnemyLife : MonoBehaviour
         }
 
         Debug.Log("Die");
-        _animator.SetTrigger("Die");
+        if(_isDieFirst)
+        {
+            _isDieFirst = false;
+            _animator.SetTrigger("Die");
+        }
     }
 
     private void destroyEnemy()

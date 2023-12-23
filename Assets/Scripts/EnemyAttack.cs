@@ -31,9 +31,10 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_lastAttackTime + _cooldownTime < Time.time && !_enemyLife)
+        if (_lastAttackTime + _cooldownTime < Time.time && !_enemyLife.IsDie)
         {
             Attack();
+            Debug.Log("attack enemies");
         }
     }
 
