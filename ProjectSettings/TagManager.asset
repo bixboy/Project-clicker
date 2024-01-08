@@ -9,6 +9,7 @@ TagManager:
   - Soldiers
   - GameManager
   - camera
+  - Settings
   layers:
   - Default
   - TransparentFX
