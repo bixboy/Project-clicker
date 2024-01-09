@@ -2,11 +2,18 @@ using System;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UpgradeManager : MonoBehaviour
 {
     [SerializeField] private List<UpgradeStat> _upgradeList;
     [SerializeField] private int _coinAmount;
+    [SerializeField] private TextMeshProUGUI _textGold;
+
+    private void OnValidate()
+    {
+        _textGold.text = _coinAmount.ToString();
+    }
 
     public void CollectCoin(int amount) => _coinAmount += amount;
 
@@ -18,6 +25,7 @@ public class UpgradeManager : MonoBehaviour
         int cost = GetUpgradeStatByName(statName).GetCostFromMultiplier(multi);
         if (_coinAmount < cost) { return false; }
         _coinAmount -= cost;
+        _textGold.text = _coinAmount.ToString();
         GetUpgradeStatByName(statName).Buy(multi);
         return true;
     }

@@ -313,6 +313,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4181249056554244391, guid: 4b956a8fc5c8cfa4a98f8910f9ea6407, type: 3}
   m_PrefabInstance: {fileID: 8229078481093861976}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &199451237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3615719166328673180, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+  m_PrefabInstance: {fileID: 5851972550191043920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &248189516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3088,6 +3099,17 @@ Transform:
   - {fileID: 468333729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196833397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7371837539160511240, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+  m_PrefabInstance: {fileID: 5851972550191043920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1246503326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1634642040579612417, guid: 11ba2d44538d70b438174e7245600491, type: 3}
@@ -3596,6 +3618,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.14886475
       objectReference: {fileID: 0}
+    - target: {fileID: 1006807545066845722, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.8182983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006807545066845722, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.7986984
+      objectReference: {fileID: 0}
     - target: {fileID: 1174420451030921945, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.09790039
@@ -3792,6 +3822,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.16748047
       objectReference: {fileID: 0}
+    - target: {fileID: 3401815530477249006, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5299988
+      objectReference: {fileID: 0}
     - target: {fileID: 3424522119415939066, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -3835,6 +3869,14 @@ PrefabInstance:
     - target: {fileID: 4043652742155626946, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367402446227607012, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4367402446227607012, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5458730673654519301, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3978,6 +4020,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 182840282270640245, guid: 10469e10ca88272449ab59b96accc7c2, type: 3}
+      propertyPath: _textGold
+      value: 
+      objectReference: {fileID: 199451237}
+    - target: {fileID: 182840282270640245, guid: 10469e10ca88272449ab59b96accc7c2, type: 3}
       propertyPath: _coinAmount
       value: 10000
       objectReference: {fileID: 0}
@@ -4033,6 +4079,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8904882242940119750, guid: 10469e10ca88272449ab59b96accc7c2, type: 3}
+      propertyPath: _textLimitSoldiers
+      value: 
+      objectReference: {fileID: 1196833397}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

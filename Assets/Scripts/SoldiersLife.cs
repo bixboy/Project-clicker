@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using spawn;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,16 @@ public class SoldiersLife : MonoBehaviour
     {
         Debug.Log("Reset");
         _maxHealth = 100;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return _currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return _maxHealth;
     }
 
     private bool ValidateMaxHealth()
@@ -90,6 +101,9 @@ public class SoldiersLife : MonoBehaviour
     {
         _isDie = true;
         _currentHealth = 0;
+
+        InvokeSoldats invoke = FindObjectOfType<InvokeSoldats>();
+        invoke.RemoveSoldierFromList(this);
 
         Debug.Log("Die");
 
