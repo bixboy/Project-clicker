@@ -60,7 +60,6 @@ public class MoveSoldats : MonoBehaviour
         {
             StartCoroutine(Cooldown());
             _canAttack = true;
-            Debug.Log("oui1");
         }
     }
 

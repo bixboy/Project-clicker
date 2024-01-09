@@ -90,7 +90,6 @@ public class EnemyLife : MonoBehaviour
 
         _onDamage.Invoke();
 
-        Debug.Log("Damage to enemy");
     }
 
     private void Die()

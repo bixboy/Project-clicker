@@ -34,7 +34,6 @@ public class EnemyAttack : MonoBehaviour
         if (_lastAttackTime + _cooldownTime < Time.time && !_enemyLife.IsDie)
         {
             Attack();
-            Debug.Log("attack enemies");
         }
     }
 
@@ -54,6 +53,7 @@ public class EnemyAttack : MonoBehaviour
         int j = 0;
         while (i < _soldats.Count && j < 7)
         {
+            Debug.Log("attack enemies");
             _animator.SetTrigger("Attack");
             if (!_soldats[i].TakeDamage(_damage)) { i++; } ;
             j++;
