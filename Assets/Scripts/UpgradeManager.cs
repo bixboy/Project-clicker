@@ -13,11 +13,12 @@ public class UpgradeManager : MonoBehaviour
     public UpgradeStat GetUpgradeStatByName(StatName statName) => _upgradeList.Find(x => x.Name == statName);
     public Upgrade GetUpgradeByName(StatName statName) => GetUpgradeStatByName(statName).GetUpgrade();
     
-    public bool Buy(StatName statName)
+    public bool Buy(StatName statName, int multi = 1)
     {
-        if (_coinAmount < GetUpgradeStatByName(statName).Cost) { return false; }
-        _coinAmount -= GetUpgradeStatByName(statName).Cost;
-        GetUpgradeStatByName(statName).Buy();
+        int cost = GetUpgradeStatByName(statName).GetCostFromMultiplier(multi);
+        if (_coinAmount < cost) { return false; }
+        _coinAmount -= cost;
+        GetUpgradeStatByName(statName).Buy(multi);
         return true;
     }
 }
@@ -36,11 +37,24 @@ public class UpgradeStat
     public float Amount => _upgrade.BaseAmount + _level * _upgrade.BaseAmount;
 
     public float NextAmount => _upgrade.BaseAmount + (_level + 1) * _upgrade.BaseAmount;
+    public float GetNextAmountFromMultiplier(int multi) => _upgrade.BaseAmount + (_level + multi) * _upgrade.BaseAmount;
     public int Cost => (int)(_upgrade.BaseCost * (0.2*_level + 1));
 
-    public void Buy()
+    public int GetCostFromMultiplier(int multi)
     {
-        _level++;
+        //Can be improved with maths
+        int value = 0;
+        for (int i = 0; i < multi; i++)
+        {
+            value += (int)(_upgrade.BaseCost * (0.2 * (_level+i) + 1));
+        }
+        return value;
+    }
+
+
+    public void Buy(int index = 1)
+    {
+        _level+= index;
     }
 
 }
