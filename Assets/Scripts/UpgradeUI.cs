@@ -15,7 +15,7 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private TMP_Text _nextAmount;
     [SerializeField] private Image _upgradeSprite;
     private UpgradeManager _upgradeManager;
-    private Upgrade _upgrade;
+    private UpgradeStat _upgrade;
 
     private void Awake()
     {
@@ -24,17 +24,17 @@ public class UpgradeUI : MonoBehaviour
     }
     private void UpdateUI()
     {
-        _upgrade = _upgradeManager.GetUpgradeByName(_displayedUpgrade);
-        _upgradeName.text = _displayedUpgrade.ToString();
+        _upgrade = _upgradeManager.GetUpgradeStatByName(_displayedUpgrade);
+        _upgradeName.text = _upgrade.GetUpgrade().StringName;
         _upgradeCost.text = _upgrade.Cost.ToString();
         _currentAmount.text = _upgrade.Amount.ToString(CultureInfo.InvariantCulture);
         _nextAmount.text = _upgrade.NextAmount.ToString(CultureInfo.InvariantCulture);
-        _upgradeSprite.sprite = _upgrade.Sprite;
+        _upgradeSprite.sprite = _upgrade.GetUpgrade().Sprite;
     }
 
     public void Buy()
     {
-        _upgradeManager.Buy(_displayedUpgrade);
+        Debug.Log(_upgradeManager.Buy(_displayedUpgrade));
         UpdateUI();
     }
 

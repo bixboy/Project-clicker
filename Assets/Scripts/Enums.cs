@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum StatName
 {
-    HP=0,
-    Dmg_speed=1,
-    Dmg=2,
-    CRIT_Chance=3,
+    Health=0,
+    AttackSpeed=1,
+    AttackDamage=2,
+    CritChance=3,
 }

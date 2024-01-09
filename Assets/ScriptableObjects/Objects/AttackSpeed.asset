@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackSpeed
   m_EditorClassIdentifier: 
   _statName: 1
+  _stringName: Attack Speed
   _amount: 1
-  _level: 1
-  _cost: 0
+  _cost: 100
   _sprite: {fileID: 1148297444, guid: d84504b3dbbf175439a5aa133355f4e4, type: 3}

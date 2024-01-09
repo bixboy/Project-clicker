@@ -23,7 +23,7 @@ public class SoldiersLife : MonoBehaviour
     private void Awake()
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
-        _maxHealth = (int)_upgradeManager.GetUpgradeByName(StatName.HP).Amount;
+        _maxHealth = (int)_upgradeManager.GetUpgradeStatByName(StatName.Health).Amount;
         _currentHealth = _maxHealth;
         
     }

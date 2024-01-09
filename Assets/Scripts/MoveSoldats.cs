@@ -29,8 +29,8 @@ public class MoveSoldats : MonoBehaviour
     private void Awake()
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
-        _damage = (int)_upgradeManager.GetUpgradeByName(StatName.Dmg).Amount;
-        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeByName(StatName.Dmg_speed).Amount;
+        _damage = (int)_upgradeManager.GetUpgradeStatByName(StatName.AttackDamage).Amount;
+        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount;
         _animator = GetComponent<Animator>();
     }
 
@@ -92,7 +92,7 @@ public class MoveSoldats : MonoBehaviour
                 _animator.SetTrigger("SecondAttack");
                 _firstAttack = true;
             }
-            bool crit = Random.Range(0, 100) < (int)_upgradeManager.GetUpgradeByName(StatName.CRIT_Chance).Amount;
+            bool crit = Random.Range(0, 100) < (int)_upgradeManager.GetUpgradeStatByName(StatName.CritChance).Amount;
             _destPoint.GetComponent<EnemyLife>().TakeDamage(crit? _damage : _damage*2);
             _canAttack = false;
         }

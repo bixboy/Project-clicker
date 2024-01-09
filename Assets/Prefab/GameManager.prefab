@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &462593847846589777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7909663389869665043}
+  - component: {fileID: 8904882242940119750}
+  - component: {fileID: 182840282270640245}
+  - component: {fileID: 4893840051007196216}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7909663389869665043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462593847846589777}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3283026, y: -1.7494397, z: -4.9580393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8904882242940119750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462593847846589777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5132b05fba2a3f49860b08455db20ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabSoldiers: {fileID: 3477278065824556355, guid: 11ba2d44538d70b438174e7245600491, type: 3}
+--- !u!114 &182840282270640245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462593847846589777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d5216c7b9be20499fd302ce5f45507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradeList:
+  - _upgrade: {fileID: 11400000, guid: d7b29f8cc6f741d408cdbb74466591ac, type: 2}
+    _level: 0
+  - _upgrade: {fileID: 11400000, guid: 0a5a3d4b0bae19b499c2628db87e3caa, type: 2}
+    _level: 0
+  - _upgrade: {fileID: 11400000, guid: 9d1f42071f0cb8e4c8a395cc719010c0, type: 2}
+    _level: 0
+  - _upgrade: {fileID: 11400000, guid: 48cfc7373a967fa47b48f410ef0ae0cd, type: 2}
+    _level: 0
+  _coinAmount: 0
+--- !u!114 &4893840051007196216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462593847846589777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f603b833f0e30048b779bf6a48531b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+  _spriteRendererOpen: {fileID: 1427635845, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
+  _spriteRendererClose: {fileID: -1860993597, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
