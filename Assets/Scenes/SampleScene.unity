@@ -4025,7 +4025,7 @@ PrefabInstance:
       objectReference: {fileID: 199451237}
     - target: {fileID: 182840282270640245, guid: 10469e10ca88272449ab59b96accc7c2, type: 3}
       propertyPath: _coinAmount
-      value: 10000
+      value: 12398405
       objectReference: {fileID: 0}
     - target: {fileID: 462593847846589777, guid: 10469e10ca88272449ab59b96accc7c2, type: 3}
       propertyPath: m_Name

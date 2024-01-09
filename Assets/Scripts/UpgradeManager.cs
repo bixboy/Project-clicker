@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UsefulScript;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class UpgradeManager : MonoBehaviour
 
     private void OnValidate()
     {
-        _textGold.text = _coinAmount.ToString();
+        //TODO: A Changer, c'est pas censé être sur le Script Upgrade Manager
+        _textGold.text = Scripts.NumberToString(_coinAmount, 6, 2);
     }
 
     public void CollectCoin(int amount) => _coinAmount += amount;

@@ -4,6 +4,7 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UsefulScript;
 
 public class UpgradeUI : MonoBehaviour
 {
@@ -29,10 +30,10 @@ public class UpgradeUI : MonoBehaviour
         int multi = _dropdown.GetMultiplier();
         _upgrade = _upgradeManager.GetUpgradeStatByName(_displayedUpgrade);
         _upgradeName.text = _upgrade.GetUpgrade().StringName;
-        _upgradeCost.text = _upgrade.GetCostFromMultiplier(multi).ToString();
-        _currentAmount.text = _upgrade.Amount.ToString(CultureInfo.InvariantCulture);
-        _nextAmount.text = _upgrade.GetNextAmountFromMultiplier(multi).ToString(CultureInfo.InvariantCulture);
-        _upgradeSprite.sprite = _upgrade.GetUpgrade().Sprite;
+        _upgradeCost.text = Scripts.NumberToString(_upgrade.GetCostFromMultiplier(multi), 3, 2);
+        _currentAmount.text = Scripts.NumberToString((int)_upgrade.Amount,3,1);
+        _nextAmount.text = Scripts.NumberToString((int) _upgrade.GetNextAmountFromMultiplier(multi),3,1);
+        _upgradeSprite.sprite = _upgrade.GetUpgrade().Sprite; 
     }
 
     public void Buy()
