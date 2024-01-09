@@ -53,7 +53,8 @@ public class EnemyLife : MonoBehaviour
 
     #endregion
 
-
+    public void SetMaxHealth(int maxHealth) => _maxHealth = maxHealth;
+    
     private void Regen(int amount)
     {
         // Guards
