@@ -13,11 +13,12 @@ public class EnemyAttack : MonoBehaviour
     private EnemyLife _enemyLife;
 
 
-    public void SetStat(int damage, int maxHealth, float cooldownTime)
+    public void SetStat(int damage, int maxHealth, float cooldownTime, UpgradeManager upgradeManager)
     {
         _enemyLife.SetMaxHealth(maxHealth);
         _damage = damage;
         _cooldownTime = cooldownTime;
+        _enemyLife.SetManager(upgradeManager);
     }
     // Update is called once per frame
 

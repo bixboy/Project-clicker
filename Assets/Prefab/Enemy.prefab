@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 0
+  _gameobjectCoins: {fileID: 269662733710440276, guid: cfa158804b667fb47adace0202d28d54, type: 3}
   _onDamage:
     m_PersistentCalls:
       m_Calls: []

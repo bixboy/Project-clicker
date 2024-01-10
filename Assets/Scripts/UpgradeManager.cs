@@ -27,7 +27,7 @@ public class UpgradeManager : MonoBehaviour
         int cost = GetUpgradeStatByName(statName).GetCostFromMultiplier(multi);
         if (_coinAmount < cost) { return false; }
         _coinAmount -= cost;
-        _textGold.text = _coinAmount.ToString();
+        _textGold.text = Scripts.NumberToString(_coinAmount, 6, 2);
         GetUpgradeStatByName(statName).Buy(multi);
         return true;
     }

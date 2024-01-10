@@ -29,7 +29,7 @@ namespace spawn
 
         private void OnValidate()
         {
-            _textLimitSoldiers.text = _soldatsCount.ToString();
+            _textLimitSoldiers.text = "x" + _soldatsCount.ToString();
         }
 
         private void Start()
@@ -57,7 +57,7 @@ namespace spawn
                 {
                     _soldats.Add(soldierLifeComponent);
                     _soldatsCount++;
-                    _textLimitSoldiers.text = _soldatsCount.ToString();
+                    _textLimitSoldiers.text = "x" + _soldatsCount.ToString();
                 }
                 else
                 {

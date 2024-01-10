@@ -17,9 +17,11 @@ public class EnemyLife : MonoBehaviour
     private bool _isDieFirst = true;
     public bool IsDie => _isDie;
 
+    [SerializeField] private GameObject _gameobjectCoins;
     [SerializeField] private UnityEvent _onDamage;
     private Animator _animator;
 
+    private UpgradeManager _upgradeManager;
     // Properties
     public int CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
 
@@ -54,7 +56,9 @@ public class EnemyLife : MonoBehaviour
     #endregion
 
     public void SetMaxHealth(int maxHealth) => _maxHealth = maxHealth;
-    
+
+    public void SetManager(UpgradeManager upgradeManager) => _upgradeManager = upgradeManager;
+
     private void Regen(int amount)
     {
         // Guards
@@ -97,6 +101,7 @@ public class EnemyLife : MonoBehaviour
     {
         _isDie = true;
         _currentHealth = 0;
+        int value = UnityEngine.Random.Range(3, 5);
 
         GameObject[] soldats = GameObject.FindGameObjectsWithTag("Soldiers");
         foreach (GameObject soldat in soldats)
@@ -107,6 +112,11 @@ public class EnemyLife : MonoBehaviour
         Debug.Log("Die");
         if(_isDieFirst)
         {
+            for (int i = 0; i < value; i++)
+            {
+                GameObject newCoin = Instantiate(_gameobjectCoins, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
+                newCoin.GetComponent<Coins>().SetManager(_upgradeManager);
+            }
             _isDieFirst = false;
             _animator.SetTrigger("Die");
         }
