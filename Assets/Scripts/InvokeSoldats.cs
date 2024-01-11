@@ -14,7 +14,6 @@ namespace spawn
 
         // Field 
         [SerializeField] private GameObject _prefabSoldiers;
-        private GameObject _spawnPoint;
 
         private List<SoldiersLife> _soldats = new List<SoldiersLife>();
 
@@ -35,7 +34,6 @@ namespace spawn
         private void Start()
         {
             _soldatsCountMax--;
-            _spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         }
 
         private void Reset()
@@ -47,9 +45,9 @@ namespace spawn
 
         public void spawnSoldier()
         {
-            if (_soldatsCount <= _soldatsCountMax && _prefabSoldiers != null && _spawnPoint != null)
+            if (_soldatsCount <= _soldatsCountMax && _prefabSoldiers != null)
             {
-                Transform spawnPointTransform = _spawnPoint.transform;
+                Transform spawnPointTransform = transform;
                 GameObject newSoldier = Instantiate(_prefabSoldiers, spawnPointTransform.position, spawnPointTransform.rotation);
                 SoldiersLife soldierLifeComponent = newSoldier.GetComponent<SoldiersLife>();
 
@@ -65,7 +63,7 @@ namespace spawn
                 }
 
             }
-            else if (_soldatsCount >= _soldatsCountMax && _prefabSoldiers != null && _spawnPoint != null && _soldats.Count > 0)
+            else if (_soldatsCount >= _soldatsCountMax && _prefabSoldiers != null && _soldats.Count > 0)
             {
                 SoldiersLife soldierToRemove = _soldats[0];
                 if (soldierToRemove.GetCurrentHealth() < soldierToRemove.GetMaxHealth()/2)
@@ -78,7 +76,7 @@ namespace spawn
             }
             else
             {
-                Debug.LogWarning("Conditions insuffisantes pour créer un nouveau soldat.");
+                Debug.LogWarning("Conditions insuffisantes pour crï¿½er un nouveau soldat.");
             }
 
         }
