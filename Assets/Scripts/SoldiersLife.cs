@@ -13,10 +13,15 @@ public class SoldiersLife : MonoBehaviour
     private int _maxHealth;
     [SerializeField] private int _currentHealth;
 
-    private bool _isDie;
+    [SerializeField] public bool _isDie;
     private UpgradeManager _upgradeManager;
 
+    [SerializeField] private float _TimeDieClear;
+    private float _currentCountdown;
+    private bool _isDieFirstTime = false;
+
     [SerializeField] private UnityEvent _onDamage;
+    [SerializeField] private Animator _animator;
 
     // Methodes
     #region EditorParametre
@@ -26,7 +31,7 @@ public class SoldiersLife : MonoBehaviour
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _maxHealth = (int)_upgradeManager.GetUpgradeStatByName(StatName.Health).Amount;
         _currentHealth = _maxHealth;
-        
+        _animator = GetComponent<Animator>();
     }
 
     private void Reset()
@@ -90,16 +95,33 @@ public class SoldiersLife : MonoBehaviour
         _currentHealth = Math.Clamp(_currentHealth - amount, 0, _maxHealth);
 
         _onDamage.Invoke();
-        Debug.Log("Damage");
 
-        if (_currentHealth <= 0) { Die(); return true; }
+        if (_currentHealth <= 0 && !_isDieFirstTime) { _currentCountdown = _TimeDieClear; DieAnim(); return true; }
         return false;
 
     }
 
-    private void Die()
+    private void Update()
+    {
+        if (_isDie) 
+        {
+            _currentCountdown -= Time.deltaTime;
+            if (_currentCountdown <= 0f)
+            {
+                Die();
+            }
+        }
+    }
+
+    private void DieAnim()
     {
         _isDie = true;
+        _isDieFirstTime = true;
+        _animator.SetTrigger("Die");
+    }
+
+    private void Die()
+    {
         _currentHealth = 0;
 
         InvokeSoldats invoke = FindObjectOfType<InvokeSoldats>();
@@ -116,7 +138,7 @@ public class SoldiersLife : MonoBehaviour
     }
 
     [Button]
-    private void coucou() => TakeDamage(10);
+    private void TakeDamage() => TakeDamage(10);
     [Button]
-    private void coucou2() => Regen(5);
+    private void Regen() => Regen(5);
 }

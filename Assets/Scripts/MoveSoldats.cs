@@ -16,6 +16,9 @@ public class MoveSoldats : MonoBehaviour
     private bool _canAttack = false;
     private UpgradeManager _upgradeManager;
 
+    private SoldiersLife _soldiersLife;
+    private int life;
+
     [SerializeField]
     private bool _destActive = false;
     private bool _stopMove = false;
@@ -32,6 +35,7 @@ public class MoveSoldats : MonoBehaviour
         _damage = (int)_upgradeManager.GetUpgradeStatByName(StatName.AttackDamage).Amount;
         _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount;
         _animator = GetComponent<Animator>();
+        _soldiersLife = GetComponent<SoldiersLife>();
     }
 
     private void Update()
@@ -86,7 +90,8 @@ public class MoveSoldats : MonoBehaviour
 
     private void Attack()
     {
-        if (_canAttack && _destPoint!=null && this.CompareTag("Soldiers"))
+        life = _soldiersLife.GetCurrentHealth();
+        if (_canAttack && _destPoint!=null && this.CompareTag("Soldiers") && life > 0)
         {
             if (_firstAttack) 
             {

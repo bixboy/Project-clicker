@@ -156,8 +156,8 @@ public class EnemyLife : MonoBehaviour
     }
 
     [Button]
-    private void coucou() => TakeDamage(10);
+    private void TakeDamage() => TakeDamage(10);
     [Button]
-    private void coucou2() => Regen(5);
+    private void Regen() => Regen(5);
 
 }
