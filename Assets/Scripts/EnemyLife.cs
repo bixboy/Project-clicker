@@ -22,6 +22,8 @@ public class EnemyLife : MonoBehaviour
     private Animator _animator;
 
     private UpgradeManager _upgradeManager;
+    private UI _ui;
+
     // Properties
     public int CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
 
@@ -58,6 +60,8 @@ public class EnemyLife : MonoBehaviour
     public void SetMaxHealth(int maxHealth) => _maxHealth = maxHealth;
 
     public void SetManager(UpgradeManager upgradeManager) => _upgradeManager = upgradeManager;
+
+    public void SetUI(UI ui) => _ui = ui;
 
     private void Regen(int amount)
     {
@@ -118,13 +122,14 @@ public class EnemyLife : MonoBehaviour
                 newCoin.GetComponent<Coins>().SetManager(_upgradeManager);
             }
             _isDieFirst = false;
+            _ui.SetCurrentCount(1);
             _animator.SetTrigger("Die");
         }
     }
 
     private void destroyEnemy()
     {
-        Debug.Log("Destroy");
+        Debug.Log("Enemy Die");
         Destroy(gameObject);
     }
 

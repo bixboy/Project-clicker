@@ -15,9 +15,23 @@ public class UI : MonoBehaviour
     [SerializeField]
     private Sprite _spriteRendererClose;
 
+    [SerializeField]
+    private Slider _slider;
+
     private void Start()
     {
         _spriteRenderer.sprite = _spriteRendererClose;
+    }
+
+    public void SetEnemyCount(int count)
+    {
+        _slider.value = 0;
+        _slider.maxValue = count;
+    }
+
+    public void SetCurrentCount(int count)
+    {
+        _slider.value += count;
     }
 
     public void OpenSettings()

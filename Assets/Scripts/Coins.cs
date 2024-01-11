@@ -9,6 +9,11 @@ public class Coins : MonoBehaviour
 
     private Rigidbody2D _rigidebodyCoin;
     [SerializeField] private float throwForce;
+    [SerializeField]  private float bounceForce;
+    [SerializeField]  private float dampingFactor;
+
+    private int _bounceCount;
+
     [SerializeField] private float _timeClearCoins;
 
     public void SetManager(UpgradeManager upgradeManager)
@@ -22,7 +27,19 @@ public class Coins : MonoBehaviour
         _rigidebodyCoin = GetComponent<Rigidbody2D>();
         Vector2 direction = new Vector2(Random.Range(1.4f,-1), Random.Range(0.5f, 1f)).normalized;
         _rigidebodyCoin.AddForce(direction * throwForce);
-        Destroy(gameObject, 3);
+        Destroy(gameObject, _timeClearCoins);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && _bounceCount < 2)
+        {
+            _rigidebodyCoin.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+
+            _rigidebodyCoin.velocity *= dampingFactor;
+
+            _bounceCount++;
+        }
     }
 
     private void OnDestroy()
