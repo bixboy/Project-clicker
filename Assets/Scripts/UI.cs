@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UsefulScript;
 
 public class UI : MonoBehaviour
 {
@@ -18,9 +20,20 @@ public class UI : MonoBehaviour
     [SerializeField]
     private Slider _slider;
 
+    private UpgradeManager _upgradeManager;
+    [SerializeField] private TextMeshProUGUI _textGold;
+
+    private void UpdateCoinUI(int coinAmount)
+    {
+        _textGold.text = Scripts.NumberToString(coinAmount, 6, 2);
+    }
+
     private void Start()
     {
         _spriteRenderer.sprite = _spriteRendererClose;
+        _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
+        _upgradeManager.OnCoinValueChanged += UpdateCoinUI;
+        _upgradeManager.CollectCoin(0);
     }
 
     public void SetEnemyCount(int count)
@@ -29,9 +42,9 @@ public class UI : MonoBehaviour
         _slider.maxValue = count;
     }
 
-    public void SetCurrentCount(int count)
+    public void AddCurrentEnemyCount()
     {
-        _slider.value += count;
+        _slider.value += 1;
     }
 
     public void OpenSettings()

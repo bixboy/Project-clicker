@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8c5717a8675104088cc5332adae49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _valueGold: 0
+  _valueGold: 1
   throwForce: 300
   bounceForce: 7
   dampingFactor: 0.3

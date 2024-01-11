@@ -410,7 +410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 285225374296108550}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: CloseSettings
         m_Mode: 1
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 285225374296108550}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
@@ -1383,6 +1383,7 @@ GameObject:
   - component: {fileID: 8197562667380099325}
   - component: {fileID: 3486104315891902616}
   - component: {fileID: 6602581109096339744}
+  - component: {fileID: 285225374296108550}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -1475,6 +1476,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &285225374296108550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424522119415939066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f603b833f0e30048b779bf6a48531b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 3019830732694259372}
+  _spriteRenderer: {fileID: 6030677284946331036}
+  _spriteRendererOpen: {fileID: 1427635845, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
+  _spriteRendererClose: {fileID: -1860993597, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
+  _slider: {fileID: 5563360871272674765}
+  _textGold: {fileID: 3615719166328673180}
 --- !u!1 &3431344226026673085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,12 +3632,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: spawn.InvokeSoldats, Assembly-CSharp
+        m_MethodName: spawnSoldier
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

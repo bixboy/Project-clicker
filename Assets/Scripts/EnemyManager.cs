@@ -10,8 +10,8 @@ public class EnemyManager : MonoBehaviour
     private List<EnemyAttack> _enemyList = new List<EnemyAttack>();
     private GameObject _boss;
     private LevelManager _levelManager;
-    private UpgradeManager _upgradeManager;
-    private UI _ui;
+    private UpgradeManager _upgradeManager; 
+    [SerializeField] private UI _ui;
     private void Awake()
     {
         foreach (Transform child in transform)
@@ -25,8 +25,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         _levelManager = GameObject.FindWithTag("GameManager").GetComponent<LevelManager>();
-        _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
-        _ui = GameObject.FindWithTag("GameManager").GetComponent<UI>();
+        _upgradeManager = _levelManager.gameObject.GetComponent<UpgradeManager>();
     }
 
     private void Start()
@@ -39,8 +38,10 @@ public class EnemyManager : MonoBehaviour
         float cooldownTime = (float) (1 - level * 0.01);
         foreach (EnemyAttack enemy in _enemyList)
         {
-            enemy.SetStat(damage,maxHealth,cooldownTime, _upgradeManager, _ui);
-
+            enemy.SetStat(damage,maxHealth,cooldownTime);
+            EnemyLife enemyLife = enemy.GetEnemyLife();
+            enemyLife.SetManager(_upgradeManager);
+            enemyLife.OnDeath += _ui.AddCurrentEnemyCount;
         }
         _ui.SetEnemyCount(_enemyList.Count);
     }

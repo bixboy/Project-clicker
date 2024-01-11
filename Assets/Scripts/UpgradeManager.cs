@@ -9,15 +9,18 @@ public class UpgradeManager : MonoBehaviour
 {
     [SerializeField] private List<UpgradeStat> _upgradeList;
     [SerializeField] private int _coinAmount;
-    [SerializeField] private TextMeshProUGUI _textGold;
 
-    private void OnValidate()
+    public event Action<int> OnCoinValueChanged;
+    /*private void OnValidate()
     {
-        //TODO: A Changer, c'est pas censé être sur le Script Upgrade Manager
         _textGold.text = Scripts.NumberToString(_coinAmount, 6, 2);
-    }
+    }*/
 
-    public void CollectCoin(int amount) => _coinAmount += amount;
+    public void CollectCoin(int amount)
+    {
+        _coinAmount += amount;
+        OnCoinValueChanged?.Invoke(_coinAmount);
+    }
 
     public UpgradeStat GetUpgradeStatByName(StatName statName) => _upgradeList.Find(x => x.Name == statName);
     public Upgrade GetUpgradeByName(StatName statName) => GetUpgradeStatByName(statName).GetUpgrade();
@@ -27,7 +30,7 @@ public class UpgradeManager : MonoBehaviour
         int cost = GetUpgradeStatByName(statName).GetCostFromMultiplier(multi);
         if (_coinAmount < cost) { return false; }
         _coinAmount -= cost;
-        _textGold.text = Scripts.NumberToString(_coinAmount, 6, 2);
+        OnCoinValueChanged?.Invoke(_coinAmount);
         GetUpgradeStatByName(statName).Buy(multi);
         return true;
     }
