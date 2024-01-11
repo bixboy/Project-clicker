@@ -53,7 +53,12 @@ public class MoveSoldats : MonoBehaviour
         }
         else
         {
-            FindDestPoint();
+            if (FindDestPoint() == false)
+            {
+                _destPoint = null;
+                _destActive = false;
+                _animator.SetBool("Move", false);
+            }
         }
 
         if (_stopMove && !_canAttack && this.CompareTag("Soldiers"))
@@ -63,13 +68,14 @@ public class MoveSoldats : MonoBehaviour
         }
     }
 
-    private void FindDestPoint()
+    private bool FindDestPoint()
     {
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), Mathf.Infinity, _layerMask);
-        if (!rayHit) return;
+        if (!rayHit) return false;
         _destPoint = rayHit.transform;
         Debug.Log(_destPoint);
         _destActive = true;
+        return true;
     }
 
     private IEnumerator Cooldown()
