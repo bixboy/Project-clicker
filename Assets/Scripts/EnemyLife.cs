@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EnemyLife : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class EnemyLife : MonoBehaviour
 
     [SerializeField] private GameObject _gameobjectCoins;
     [SerializeField] private UnityEvent _onDamage;
+
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private float countdownDuration;
+    private float currentCountdown;
+
     private Animator _animator;
 
     private UpgradeManager _upgradeManager;
@@ -35,6 +42,9 @@ public class EnemyLife : MonoBehaviour
     {
         CurrentHealth = _maxHealth;
         _animator = GetComponent<Animator>();
+        _canvas = GetComponentInChildren<Canvas>();
+        _slider = _canvas.GetComponentInChildren<Slider>();
+        _slider.maxValue = _maxHealth;
     }
 
     private void Reset()
@@ -95,10 +105,22 @@ public class EnemyLife : MonoBehaviour
 
         _currentHealth = Math.Clamp(_currentHealth - amount, 0, _maxHealth);
 
-        if (_currentHealth <= 0) Die();
+        _canvas.enabled = true;
+        _slider.value = _currentHealth;
 
+        if (_currentHealth <= 0) Die();
+        currentCountdown = countdownDuration;
         _onDamage.Invoke();
 
+    }
+
+    private void Update()
+    {
+        currentCountdown -= Time.deltaTime;
+        if (currentCountdown <= 0f) 
+        {
+            _canvas.enabled = false;
+        }
     }
 
     private void Die()
