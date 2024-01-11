@@ -94,7 +94,7 @@ public class SoldiersLife : MonoBehaviour
 
         _currentHealth = Math.Clamp(_currentHealth - amount, 0, _maxHealth);
 
-        _onDamage.Invoke();
+        if (_currentHealth>0 || !_isDieFirstTime) _onDamage.Invoke();
 
         if (_currentHealth <= 0 && !_isDieFirstTime) { _currentCountdown = _TimeDieClear; DieAnim(); return true; }
         return false;
