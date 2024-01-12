@@ -3,6 +3,7 @@ using spawn;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ public class SoldiersLife : MonoBehaviour
     private int _maxHealth;
     [SerializeField] private int _currentHealth;
 
-    [SerializeField] public bool _isDie;
+    [SerializeField] public bool _isDead;
     private UpgradeManager _upgradeManager;
 
     [SerializeField] private float _TimeDieClear;
@@ -73,7 +74,7 @@ public class SoldiersLife : MonoBehaviour
             throw new ArgumentException("Mauvaise valeur, valeur n�gative");
         }
 
-        if (_isDie)
+        if (_isDead)
         {
             return;
         }
@@ -103,7 +104,7 @@ public class SoldiersLife : MonoBehaviour
 
     private void Update()
     {
-        if (_isDie) 
+        if (_isDead) 
         {
             _currentCountdown -= Time.deltaTime;
             if (_currentCountdown <= 0f)
@@ -115,17 +116,18 @@ public class SoldiersLife : MonoBehaviour
 
     private void DieAnim()
     {
-        _isDie = true;
+        _isDead = true;
         _isDieFirstTime = true;
+
+        InvokeSoldats invoke = FindObjectOfType<InvokeSoldats>();
+        invoke.RemoveSoldierFromList(this);
+
         _animator.SetTrigger("Die");
     }
 
     private void Die()
     {
         _currentHealth = 0;
-
-        InvokeSoldats invoke = FindObjectOfType<InvokeSoldats>();
-        invoke.RemoveSoldierFromList(this);
 
         Debug.Log("Die");
 

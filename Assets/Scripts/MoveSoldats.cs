@@ -7,6 +7,7 @@ public class MoveSoldats : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _distStop;
+    [SerializeField] private float _distStopBoss;
 
     [SerializeField] private LayerMask _layerMask; 
 
@@ -39,43 +40,48 @@ public class MoveSoldats : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (_destActive && _destPoint != null)
+    {   
+        if(!GetComponent<SoldiersLife>()._isDead)
         {
-            float distance = Vector2.Distance(transform.position, _destPoint.position);
-            if (distance > _distStop)
+            if (_destActive && _destPoint != null)
             {
-                _stopMove = false;
-                _animator.SetBool("Move", true);
-                transform.position = Vector2.MoveTowards(transform.position, _destPoint.position, _moveSpeed * Time.deltaTime);
+                float distance = Vector2.Distance(transform.position, _destPoint.position);
+                if (distance > _distStop)
+                {
+                    _stopMove = false;
+                    _animator.SetBool("Move", true);
+                    transform.position = Vector2.MoveTowards(transform.position, _destPoint.position, _moveSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    _animator.SetBool("Move", false);
+                    _stopMove = true;
+                }
             }
             else
             {
-                _animator.SetBool("Move", false);
-                _stopMove = true;
+                if (FindDestPoint() == false)
+                {
+                    _destPoint = null;
+                    _destActive = false;
+                    _animator.SetBool("Move", false);
+                }
             }
-        }
-        else
-        {
-            if (FindDestPoint() == false)
-            {
-                _destPoint = null;
-                _destActive = false;
-                _animator.SetBool("Move", false);
-            }
-        }
 
-        if (_stopMove && !_canAttack && this.CompareTag("Soldiers"))
-        {
-            StartCoroutine(Cooldown());
-            _canAttack = true;
+            if (_stopMove && !_canAttack && this.CompareTag("Soldiers"))
+            {
+                StartCoroutine(Cooldown());
+                _canAttack = true;
+            }
         }
+       
     }
 
     private bool FindDestPoint()
     {
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), Mathf.Infinity, _layerMask);
         if (!rayHit) return false;
+        if (rayHit.collider.CompareTag("Boss")) _distStop = _distStopBoss;
         _destPoint = rayHit.transform;
         Debug.Log(_destPoint);
         _destActive = true;

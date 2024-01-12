@@ -38,9 +38,17 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        if (_lastAttackTime + _cooldownTime < Time.time && !_enemyLife.IsDie)
+        if (_lastAttackTime + _cooldownTime < Time.time && !_enemyLife.IsDie && !CompareTag("Boss"))
         {
             Attack();
+        }
+        else if(_lastAttackTime + _cooldownTime < Time.time && !_enemyLife.IsDie && CompareTag("Boss"))
+        {
+            if(_soldats.Count > 0)
+            {
+                _animator.SetTrigger("Attack");
+                _lastAttackTime = Time.time;
+            }
         }
     }
 
@@ -49,6 +57,19 @@ public class EnemyAttack : MonoBehaviour
         if(collision.gameObject.CompareTag("Soldiers") && _soldats.Contains(collision.GetComponent<SoldiersLife>()))
         {
             _soldats.Remove(collision.GetComponent<SoldiersLife>());
+        }
+    }
+
+    private void BossAttack()
+    {
+        if (_soldats.Count == 0) { return; }
+        List<SoldiersLife> tempSoldats = _soldats;
+        int i = 0;
+        int j = 0;
+        while (i < _soldats.Count && j < 7)
+        {
+            if (!_soldats[i].TakeDamage(_damage)) { i++; };
+            j++;
         }
     }
 

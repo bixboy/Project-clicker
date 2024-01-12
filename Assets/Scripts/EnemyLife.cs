@@ -23,7 +23,7 @@ public class EnemyLife : MonoBehaviour
 
     [SerializeField] private Canvas _canvas;
     [SerializeField] private Slider _slider;
-    [SerializeField] private float countdownDuration;
+    [SerializeField] private float _timeDisabledLifeBar;
     private float currentCountdown;
 
     private Animator _animator;
@@ -107,9 +107,14 @@ public class EnemyLife : MonoBehaviour
         _slider.value = _currentHealth;
 
         if (_currentHealth <= 0) Die();
-        currentCountdown = countdownDuration;
+        DisabledLifeBar();
         _onDamage.Invoke();
 
+    }
+
+    private void DisabledLifeBar()
+    {
+        currentCountdown = _timeDisabledLifeBar;
     }
 
     private void Update()
