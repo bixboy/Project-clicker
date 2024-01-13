@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statName: 3
   _stringName: Crit Chance
+  _startAmount: 0
+  _hasMaxAmount: 1
+  _maxAmount: 100
   _amount: 1
-  _cost: 100
+  _cost: 15
   _sprite: {fileID: 1048557391, guid: d84504b3dbbf175439a5aa133355f4e4, type: 3}

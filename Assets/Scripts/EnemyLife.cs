@@ -130,21 +130,21 @@ public class EnemyLife : MonoBehaviour
     {
         _isDie = true;
         _currentHealth = 0;
-        int value = UnityEngine.Random.Range(3, 5);
+        int nbCoinDropped = UnityEngine.Random.Range(3, 5);
+        int coinValue = _upgradeManager.GetComponent<LevelManager>().GetLevelLoaded();
 
         GameObject[] soldats = GameObject.FindGameObjectsWithTag("Soldiers");
         foreach (GameObject soldat in soldats)
         {
             soldat.GetComponent<MoveSoldats>().SetDestinationActif(false);
         }
-
         Debug.Log("Die");
         if(_isDieFirst)
         {
-            for (int i = 0; i < value; i++)
+            for (int i = 0; i < nbCoinDropped; i++)
             {
-                GameObject newCoin = Instantiate(_gameobjectCoins, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
-                newCoin.GetComponent<Coins>().SetManager(_upgradeManager);
+                Coins newCoin = Instantiate(_gameobjectCoins, GetComponent<Transform>().position, GetComponent<Transform>().rotation).GetComponent<Coins>();
+                newCoin.SetStats(_upgradeManager, coinValue);
             }
             _isDieFirst = false;
             OnDeath?.Invoke();

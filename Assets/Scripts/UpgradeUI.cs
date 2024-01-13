@@ -31,8 +31,8 @@ public class UpgradeUI : MonoBehaviour
         _upgrade = _upgradeManager.GetUpgradeStatByName(_displayedUpgrade);
         _upgradeName.text = _upgrade.GetUpgrade().StringName;
         _upgradeCost.text = Scripts.NumberToString(_upgrade.GetCostFromMultiplier(multi), 3, 2);
-        _currentAmount.text = Scripts.NumberToString((int)_upgrade.Amount,3,1);
-        _nextAmount.text = Scripts.NumberToString((int) _upgrade.GetNextAmountFromMultiplier(multi),3,1);
+        _currentAmount.text =_displayedUpgrade==StatName.AttackSpeed? _upgrade.Amount.ToString() :  Scripts.NumberToString((int)_upgrade.Amount,3,1);
+        _nextAmount.text = _displayedUpgrade==StatName.AttackSpeed? _upgrade.NextAmount.ToString() : Scripts.NumberToString((int) _upgrade.GetNextAmountFromMultiplier(multi),3,1);
         _upgradeSprite.sprite = _upgrade.GetUpgrade().Sprite; 
     }
 

@@ -28,7 +28,7 @@ public class UpgradeManager : MonoBehaviour
     public bool Buy(StatName statName, int multi = 1)
     {
         int cost = GetUpgradeStatByName(statName).GetCostFromMultiplier(multi);
-        if (_coinAmount < cost) { return false; }
+        if (_coinAmount < cost || GetUpgradeStatByName(statName).MaxAmountReached) { return false; }
         _coinAmount -= cost;
         OnCoinValueChanged?.Invoke(_coinAmount);
         GetUpgradeStatByName(statName).Buy(multi);
@@ -47,11 +47,13 @@ public class UpgradeStat
 
     public StatName Name => _upgrade.Name;
     
-    public float Amount => _upgrade.BaseAmount + _level * _upgrade.BaseAmount;
+    public float Amount => Mathf.Min(_upgrade.StartAmount + _level * _upgrade.Amount, _upgrade.MaxAmount);
 
-    public float NextAmount => _upgrade.BaseAmount + (_level + 1) * _upgrade.BaseAmount;
-    public float GetNextAmountFromMultiplier(int multi) => _upgrade.BaseAmount + (_level + multi) * _upgrade.BaseAmount;
+    public float NextAmount => Mathf.Min(_upgrade.StartAmount + (_level + 1) * _upgrade.Amount, _upgrade.MaxAmount);
+    public float GetNextAmountFromMultiplier(int multi) => _upgrade.StartAmount + (_level + multi) * _upgrade.Amount;
     public int Cost => (int)(_upgrade.BaseCost * (0.2*_level + 1));
+
+    public bool MaxAmountReached => Amount == NextAmount;
 
     public int GetCostFromMultiplier(int multi)
     {

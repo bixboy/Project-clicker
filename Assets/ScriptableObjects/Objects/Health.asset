@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statName: 0
   _stringName: Health
-  _amount: 100
-  _cost: 100
+  _startAmount: 50
+  _hasMaxAmount: 0
+  _maxAmount: 0
+  _amount: 50
+  _cost: 15
   _sprite: {fileID: -691019248, guid: d84504b3dbbf175439a5aa133355f4e4, type: 3}

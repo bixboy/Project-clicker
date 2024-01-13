@@ -16,9 +16,10 @@ public class Coins : MonoBehaviour
 
     [SerializeField] private float _timeClearCoins;
 
-    public void SetManager(UpgradeManager upgradeManager)
+    public void SetStats(UpgradeManager upgradeManager, int value)
     {
         _upgradeManager = upgradeManager;
+        _valueGold = value;
     }
 
     private void Start()

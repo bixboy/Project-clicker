@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UsefulScript
 {
-    
+
     static class Scripts
     {
         public static String NumberToString(int number, int maxLength, int lengthDecimal = 1)
@@ -30,7 +30,7 @@ namespace UsefulScript
             }
 
             String result = "";
-            int value = numberLength % 3==0? 3 : numberLength % 3;
+            int value = numberLength % 3 == 0 ? 3 : numberLength % 3;
             for (int i = 0; i < value; i++)
             {
                 result += numberString[i];
@@ -50,3 +50,4 @@ namespace UsefulScript
         }
     }
 }
+
