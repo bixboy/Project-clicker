@@ -19,7 +19,7 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private Dropdown _dropdown;
     private UpgradeStat _upgrade;
 
-    private void Awake()
+    private void Start()
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         UpdateUI();

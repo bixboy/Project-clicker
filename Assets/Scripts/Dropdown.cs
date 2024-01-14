@@ -24,6 +24,6 @@ public class Dropdown : MonoBehaviour
             2 => 100,
             _ => throw new ArgumentOutOfRangeException()
         };
-        onValueChanged.Invoke();
+        onValueChanged?.Invoke();
     }
 }

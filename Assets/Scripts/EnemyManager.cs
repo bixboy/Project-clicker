@@ -24,12 +24,12 @@ public class EnemyManager : MonoBehaviour
             _enemyList.Add(child.gameObject.GetComponent<EnemyAttack>());
         }
 
-        _levelManager = GameObject.FindWithTag("GameManager").GetComponent<LevelManager>();
-        _upgradeManager = _levelManager.gameObject.GetComponent<UpgradeManager>();
     }
 
     private void Start()
     {
+        _levelManager = GameObject.FindWithTag("GameManager").GetComponent<LevelManager>();
+        _upgradeManager = _levelManager.gameObject.GetComponent<UpgradeManager>();
         int level = _levelManager.GetLevelLoaded();
         
         //TODO: Set true value for appropriate scaling

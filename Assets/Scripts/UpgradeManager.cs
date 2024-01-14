@@ -51,7 +51,7 @@ public class UpgradeStat
 
     public float NextAmount => Mathf.Min(_upgrade.StartAmount + (_level + 1) * _upgrade.Amount, _upgrade.MaxAmount);
     public float GetNextAmountFromMultiplier(int multi) => _upgrade.StartAmount + (_level + multi) * _upgrade.Amount;
-    public int Cost => (int)(_upgrade.BaseCost * (0.2*_level + 1));
+    public int Cost => (int)(_upgrade.BaseCost * (1*_level + 1));
 
     public bool MaxAmountReached => Amount == NextAmount;
 
@@ -61,7 +61,7 @@ public class UpgradeStat
         int value = 0;
         for (int i = 0; i < multi; i++)
         {
-            value += (int)(_upgrade.BaseCost * (0.2 * (_level+i) + 1));
+            value += (int)(_upgrade.BaseCost * (1 * (_level+i) + 1));
         }
         return value;
     }
