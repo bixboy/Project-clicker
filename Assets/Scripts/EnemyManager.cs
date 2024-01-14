@@ -43,6 +43,12 @@ public class EnemyManager : MonoBehaviour
             enemyLife.SetManager(_upgradeManager);
             enemyLife.OnDeath += _ui.AddCurrentEnemyCount;
         }
+
+        _boss.GetComponent<EnemyAttack>().SetStat(damage * 2, maxHealth * 10, 4);
+        EnemyLife bossLife = _boss.GetComponent<EnemyLife>();
+        bossLife.SetManager(_upgradeManager);
+        bossLife.OnDeath += _levelManager.BossKilled;
+        //_boss.GetComponent<EnemyLife>().OnDeath += _levelManager.BossKilled;
         _ui.SetEnemyCount(_enemyList.Count);
     }
 }

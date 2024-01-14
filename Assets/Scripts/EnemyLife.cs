@@ -67,7 +67,11 @@ public class EnemyLife : MonoBehaviour
 
     #endregion
 
-    public void SetMaxHealth(int maxHealth) => _maxHealth = maxHealth;
+    public void SetMaxHealth(int maxHealth)
+    {
+        _maxHealth = maxHealth;
+        CurrentHealth = maxHealth;
+    }
 
     public void SetManager(UpgradeManager upgradeManager) => _upgradeManager = upgradeManager;
 
@@ -147,7 +151,6 @@ public class EnemyLife : MonoBehaviour
                 newCoin.SetStats(_upgradeManager, coinValue);
             }
             _isDieFirst = false;
-            OnDeath?.Invoke();
             _animator.SetTrigger("Die");
         }
     }
@@ -156,6 +159,7 @@ public class EnemyLife : MonoBehaviour
     {
         Debug.Log("Enemy Die");
         Destroy(gameObject);
+        OnDeath?.Invoke();
     }
 
     [Button]

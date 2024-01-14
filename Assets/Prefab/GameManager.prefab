@@ -68,3 +68,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelLoaded: 1
+  _levelScene: SampleScene
