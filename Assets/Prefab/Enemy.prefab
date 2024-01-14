@@ -5430,7 +5430,7 @@ MonoBehaviour:
         m_CallState: 2
   _canvas: {fileID: 8357827865402367204}
   _slider: {fileID: 0}
-  countdownDuration: 4
+  _timeDisabledLifeBar: 2
 --- !u!114 &6845062176258259777
 MonoBehaviour:
   m_ObjectHideFlags: 0
