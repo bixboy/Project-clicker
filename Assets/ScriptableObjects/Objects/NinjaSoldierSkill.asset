@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 077a06f845a8ce143b0fb00d8de1d288, type: 3}
-  m_Name: Health
+  m_Script: {fileID: 11500000, guid: c4292cb29a784722b4247022a8e76392, type: 3}
+  m_Name: NinjaSoldierSkill
   m_EditorClassIdentifier: 
-  _statName: 0
-  _stringName: Health
-  _startAmount: 50
+  _skillName: 1
+  _stringName: Ninja Soldier
+  _unlockLevel: 20
+  _startAmount: 0
   _hasMaxAmount: 0
   _maxAmount: 0
-  _amount: 50
-  _cost: 15
-  _costMultiplier: 2
-  _sprite: {fileID: 1162984170, guid: f6ad929e655110543b13dfe7a28526b9, type: 3}
+  _amount: 0
+  _cost: 1000
+  _costMultiplier: 1
+  _sprite: {fileID: 0}

@@ -10,6 +10,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private List<UpgradeStat> _upgradeList;
     [SerializeField] private int _coinAmount;
 
+    public int GetCoinAmount() => _coinAmount;
     public event Action<int> OnCoinValueChanged;
     /*private void OnValidate()
     {
@@ -20,6 +21,11 @@ public class UpgradeManager : MonoBehaviour
     {
         _coinAmount += amount;
         OnCoinValueChanged?.Invoke(_coinAmount);
+    }
+
+    public void RemoveCoin(int amount)
+    {
+        _coinAmount = Mathf.Max(0, _coinAmount - amount);
     }
 
     public UpgradeStat GetUpgradeStatByName(StatName statName) => _upgradeList.Find(x => x.Name == statName);
@@ -51,7 +57,7 @@ public class UpgradeStat
 
     public float NextAmount => Mathf.Min(_upgrade.StartAmount + (_level + 1) * _upgrade.Amount, _upgrade.MaxAmount);
     public float GetNextAmountFromMultiplier(int multi) => _upgrade.StartAmount + (_level + multi) * _upgrade.Amount;
-    public int Cost => (int)(_upgrade.BaseCost * (1*_level + 1));
+    public int Cost => (int)(_upgrade.BaseCost * (_upgrade.CostMultiplier*_level + 1));
 
     public bool MaxAmountReached => Amount == NextAmount;
 
@@ -61,7 +67,7 @@ public class UpgradeStat
         int value = 0;
         for (int i = 0; i < multi; i++)
         {
-            value += (int)(_upgrade.BaseCost * (1 * (_level+i) + 1));
+            value += (int)(_upgrade.BaseCost * (_upgrade.CostMultiplier * (_level+i) + 1));
         }
         return value;
     }

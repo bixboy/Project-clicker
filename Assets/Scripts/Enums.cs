@@ -10,3 +10,10 @@ public enum StatName
     CritChance=3,
     MaxSoldiers=4,
 }
+
+public enum SkillName
+{
+    Cats = 0,
+    NinjaSoldier = 1,
+    Necromancier = 2,
+}

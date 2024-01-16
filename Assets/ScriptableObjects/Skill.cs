@@ -6,10 +6,12 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Upgrades")]
-public class Upgrade : ScriptableObject
+public class Skill : ScriptableObject
 {
-    [SerializeField] private StatName _statName;
+    [SerializeField] private SkillName _skillName;
     [SerializeField] private String _stringName;
+    [SerializeField] private int _unlockLevel;
+    [SerializeField] private float _cooldown;
     [SerializeField] private float _startAmount;
     [SerializeField] private bool _hasMaxAmount;
     [SerializeField, ShowIf("_hasMaxAmount")] private float _maxAmount;
@@ -18,10 +20,12 @@ public class Upgrade : ScriptableObject
     [SerializeField] private float _costMultiplier;
     [SerializeField] private Sprite _sprite;
 
-    public StatName Name => _statName;
+    public SkillName Name => _skillName;
     public String StringName => _stringName;
     public int BaseCost => _cost;
 
+    public int UnlockLevel => _unlockLevel;
+    public float Cooldown => _cooldown; 
     public float CostMultiplier => _costMultiplier;
 
     public float MaxAmount => _hasMaxAmount ? _maxAmount : Mathf.Infinity;

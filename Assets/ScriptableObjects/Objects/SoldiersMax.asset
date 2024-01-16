@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statName: 4
   _stringName: Units count
-  _startAmount: 1
-  _hasMaxAmount: 0
-  _maxAmount: 0
-  _amount: 1
+  _startAmount: 10
+  _hasMaxAmount: 1
+  _maxAmount: 500
+  _amount: 10
   _cost: 15
-  _costMultiplier: 0
+  _costMultiplier: 3
   _sprite: {fileID: -420181678, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
