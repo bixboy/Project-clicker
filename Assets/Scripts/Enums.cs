@@ -8,4 +8,5 @@ public enum StatName
     AttackSpeed=1,
     AttackDamage=2,
     CritChance=3,
+    MaxSoldiers=4,
 }

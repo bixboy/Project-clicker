@@ -5,6 +5,7 @@ using System;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using TMPro;
+using UnityEngine.Purchasing;
 
 
 namespace spawn
@@ -21,6 +22,7 @@ namespace spawn
         private int _soldatsCount;
         [SerializeField] private int _soldatsCountMax = 10;
 
+        private UpgradeManager _upgradeManager;
         [SerializeField] private TextMeshProUGUI _textLimitSoldiers;
 
         // Methodes
@@ -42,6 +44,12 @@ namespace spawn
         }
 
         #endregion
+
+        private void UpdateMax()
+        {
+            _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
+            _soldatsCountMax = (int)_upgradeManager.GetUpgradeStatByName(StatName.MaxSoldiers).Amount;
+        }
 
         public void spawnSoldier()
         {
@@ -78,7 +86,7 @@ namespace spawn
             {
                 Debug.LogWarning("Conditions insuffisantes pour cr�er un nouveau soldat.");
             }
-
+            UpdateMax();
         }
 
         public void RemoveSoldierFromList(SoldiersLife soldier)

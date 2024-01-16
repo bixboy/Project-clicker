@@ -54,6 +54,8 @@ MonoBehaviour:
     _level: 0
   - _upgrade: {fileID: 11400000, guid: 48cfc7373a967fa47b48f410ef0ae0cd, type: 2}
     _level: 0
+  - _upgrade: {fileID: 11400000, guid: 8da91aa20e73cd0459f5392ac280c457, type: 2}
+    _level: 0
   _coinAmount: 0
 --- !u!114 &4972958595236289856
 MonoBehaviour:

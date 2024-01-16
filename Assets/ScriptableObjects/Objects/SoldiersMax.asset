@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077a06f845a8ce143b0fb00d8de1d288, type: 3}
+  m_Name: SoldiersMax
+  m_EditorClassIdentifier: 
+  _statName: 4
+  _stringName: Units count
+  _startAmount: 1
+  _hasMaxAmount: 0
+  _maxAmount: 0
+  _amount: 1
+  _cost: 15
+  _costMultiplier: 0
+  _sprite: {fileID: -420181678, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
