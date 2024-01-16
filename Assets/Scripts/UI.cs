@@ -19,9 +19,16 @@ public class UI : MonoBehaviour
 
     [SerializeField]
     private Slider _slider;
+    [SerializeField]
+    private Image _spriteBossBar;
+    [SerializeField]
+    private Sprite _imageBoss;
+    EnemyLife _bossLife;
 
     private UpgradeManager _upgradeManager;
     [SerializeField] private TextMeshProUGUI _textGold;
+
+    public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
 
     private void UpdateCoinUI(int coinAmount)
     {
@@ -44,7 +51,22 @@ public class UI : MonoBehaviour
 
     public void AddCurrentEnemyCount()
     {
-        _slider.value += 1;
+        if (_slider.value <= _slider.maxValue)
+        {
+            _slider.value += 1;
+            CheckAllEnemyDie();
+        }
+    }
+
+    private void CheckAllEnemyDie()
+    {
+        if (_slider.value >= _slider.maxValue)
+        {
+            _spriteBossBar.sprite = _imageBoss;
+            _slider.maxValue = _bossLife.CurrentHealth;
+            _slider.value = _slider.maxValue;
+            _slider.GetComponentInChildren<Image>().color = new Color32(181, 22, 0, 255);
+        }
     }
 
     public void OpenSettings()

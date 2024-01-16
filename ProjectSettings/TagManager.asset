@@ -12,6 +12,7 @@ TagManager:
   - Settings
   - Boss
   - Ground
+  - UiSlider
   layers:
   - Default
   - TransparentFX

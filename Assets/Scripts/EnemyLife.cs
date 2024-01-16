@@ -42,9 +42,16 @@ public class EnemyLife : MonoBehaviour
     {
         CurrentHealth = _maxHealth;
         _animator = GetComponent<Animator>();
-        _canvas = GetComponentInChildren<Canvas>();
-        _slider = _canvas.GetComponentInChildren<Slider>();
-        _slider.maxValue = _maxHealth;
+        if (!CompareTag("Boss"))
+        {
+            _canvas = GetComponentInChildren<Canvas>();
+            _slider = _canvas.GetComponentInChildren<Slider>();
+            _slider.maxValue = _maxHealth;
+        }
+        else
+        {
+            _slider = GameObject.FindWithTag("UiSlider").GetComponent<Slider>();
+        }
     }
 
     private void Reset()

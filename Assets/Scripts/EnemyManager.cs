@@ -28,6 +28,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
+        _ui.SetEnemyLife(_boss.GetComponent<EnemyLife>());
         _levelManager = GameObject.FindWithTag("GameManager").GetComponent<LevelManager>();
         _upgradeManager = _levelManager.gameObject.GetComponent<UpgradeManager>();
         int level = _levelManager.GetLevelLoaded();
