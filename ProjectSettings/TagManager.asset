@@ -15,6 +15,7 @@ TagManager:
   - UiSlider
   - PageLvl
   - NavbarPage
+  - InfoSkills
   layers:
   - Default
   - TransparentFX
