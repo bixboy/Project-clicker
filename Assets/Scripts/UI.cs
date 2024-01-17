@@ -7,8 +7,8 @@ using UsefulScript;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _settings;
+    [SerializeField] private GameObject _settings;
+    [SerializeField] private GameObject _pageLevel;
 
     [SerializeField]
     private Image _spriteRenderer;
@@ -28,6 +28,10 @@ public class UI : MonoBehaviour
     private UpgradeManager _upgradeManager;
     [SerializeField] private TextMeshProUGUI _textGold;
 
+    private Dictionary<string, GameObject> _pages = new Dictionary<string, GameObject>();
+    private GameObject currentPage;
+    [SerializeField] private string pagePrincipale;
+
     public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
 
     private void UpdateCoinUI(int coinAmount)
@@ -37,6 +41,7 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
+        OpenPage(pagePrincipale);
         _spriteRenderer.sprite = _spriteRendererClose;
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _upgradeManager.OnCoinValueChanged += UpdateCoinUI;
@@ -69,13 +74,61 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void OpenSettings()
+    public void RegisterPage(string pageName, GameObject pageObject)
+    {
+        if (!_pages.ContainsKey(pageName))
+        {
+            _pages.Add(pageName, pageObject);
+            pageObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("La page avec le nom '" + pageName + "' est déjà enregistrée.");
+        }
+    }
+
+    public void OpenPage(string pageName)
+    {
+        CloseCurrentPage(pageName);
+
+        if (_pages.TryGetValue(pageName, out GameObject newPage))
+        {
+            newPage.SetActive(true);
+            currentPage = newPage;
+        }
+        else
+        {
+            Debug.LogError("La page avec le nom '" + pageName + "' n'a pas été trouvée.");
+        }
+    }
+
+    public void CloseCurrentPage(string pageName)
+    {
+        // Fermer la page actuelle si elle est définie
+        if (currentPage != null && currentPage)
+        {
+            currentPage.SetActive(false);
+            currentPage = null;
+        }
+    }
+
+    public void openLvl()
+    {
+        _pageLevel.SetActive(true);
+    }
+
+    public void closeLvl()
+    {
+        _pageLevel.SetActive(false);
+    }
+
+    public void openSettings()
     {
         _settings.SetActive(true);
         _spriteRenderer.sprite = _spriteRendererOpen;
     }
 
-    public void CloseSettings()
+    public void closeSettings()
     {
         _settings.SetActive(false);
         _spriteRenderer.sprite = _spriteRendererClose;

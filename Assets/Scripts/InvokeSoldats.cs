@@ -45,10 +45,11 @@ namespace spawn
 
         #endregion
 
-        private void UpdateMax()
+        private void Update()
         {
             _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
             _soldatsCountMax = (int)_upgradeManager.GetUpgradeStatByName(StatName.MaxSoldiers).Amount;
+            _soldatsCountMax--;
         }
 
         public void spawnSoldier()
@@ -86,7 +87,6 @@ namespace spawn
             {
                 Debug.LogWarning("Conditions insuffisantes pour cr�er un nouveau soldat.");
             }
-            UpdateMax();
         }
 
         public void RemoveSoldierFromList(SoldiersLife soldier)
