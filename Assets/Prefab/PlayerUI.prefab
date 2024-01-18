@@ -6496,6 +6496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 3019830732694259372}
   _pageLevel: {fileID: 8904106848990568838}
+  _pageUpgrade: {fileID: 5648397502892297637}
+  _pageSkills: {fileID: 5474149110137767386}
   _spriteRenderer: {fileID: 6030677284946331036}
   _spriteRendererOpen: {fileID: -1043836596, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
   _spriteRendererClose: {fileID: -1860993597, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
@@ -6503,7 +6505,6 @@ MonoBehaviour:
   _spriteBossBar: {fileID: 0}
   _imageBoss: {fileID: 0}
   _textGold: {fileID: 3615719166328673180}
-  pagePrincipale: upgradesUnits
 --- !u!114 &8425631940744897077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9885,7 +9886,6 @@ GameObject:
   - component: {fileID: 8031081273260379873}
   - component: {fileID: 2136304190019100076}
   - component: {fileID: 6120644693538333842}
-  - component: {fileID: 6155519072989847095}
   m_Layer: 5
   m_Name: skills
   m_TagString: NavbarPage
@@ -9952,18 +9952,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6155519072989847095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5474149110137767386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82a2a0362155d841992f6589ebfdb96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5550182945817624163
 GameObject:
   m_ObjectHideFlags: 0
@@ -10333,7 +10321,6 @@ GameObject:
   - component: {fileID: 5661641764926468975}
   - component: {fileID: 1467530781375444019}
   - component: {fileID: 4004003159693668478}
-  - component: {fileID: 129431868257982175}
   m_Layer: 5
   m_Name: upgradesUnits
   m_TagString: NavbarPage
@@ -10400,18 +10387,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &129431868257982175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5648397502892297637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82a2a0362155d841992f6589ebfdb96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5666586856563730039
 GameObject:
   m_ObjectHideFlags: 0

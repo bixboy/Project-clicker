@@ -46,7 +46,7 @@ public class InfoSkills : MonoBehaviour
     {
         if (!_isUnlocked)
         {
-            _skillsManager.Buy(_skillName);
+            _skillsManager.Buy(_skillName, 1);
             _isUnlocked = true;
             _locked.SetActive(false);
         }

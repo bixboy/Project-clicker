@@ -9,6 +9,8 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _pageLevel;
+    [SerializeField] private GameObject _pageUpgrade;
+    [SerializeField] private GameObject _pageSkills;
 
     [SerializeField]
     private Image _spriteRenderer;
@@ -28,10 +30,6 @@ public class UI : MonoBehaviour
     private UpgradeManager _upgradeManager;
     [SerializeField] private TextMeshProUGUI _textGold;
 
-    private Dictionary<string, GameObject> _pages = new Dictionary<string, GameObject>();
-    private GameObject currentPage;
-    [SerializeField] private string pagePrincipale;
-
     private GameObject _skills;
 
     public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
@@ -43,7 +41,6 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        OpenPage(pagePrincipale);
         _spriteRenderer.sprite = _spriteRendererClose;
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _upgradeManager.OnCoinValueChanged += UpdateCoinUI;
@@ -55,7 +52,7 @@ public class UI : MonoBehaviour
         _skills = skill;
     }
 
-    public GameObject GetSkill() { return _skills; }
+    public GameObject GetSkill() => _skills; 
 
     public void SetEnemyCount(int count)
     {
@@ -83,43 +80,18 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void RegisterPage(string pageName, GameObject pageObject)
+    public void OpenUpgrade()
     {
-        if (!_pages.ContainsKey(pageName))
-        {
-            _pages.Add(pageName, pageObject);
-            pageObject.SetActive(false);
-        }
-        else
-        {
-            Debug.LogError("La page avec le nom '" + pageName + "' est déjà enregistrée.");
-        }
+        _pageSkills.SetActive(false);
+        _pageUpgrade.SetActive(true);
     }
 
-    public void OpenPage(string pageName)
+    public void OpenSkills()
     {
-        CloseCurrentPage(pageName);
-
-        if (_pages.TryGetValue(pageName, out GameObject newPage))
-        {
-            newPage.SetActive(true);
-            currentPage = newPage;
-        }
-        else
-        {
-            Debug.LogError("La page avec le nom '" + pageName + "' n'a pas été trouvée.");
-        }
+        _pageUpgrade.SetActive(false);
+        _pageSkills.SetActive(true);
     }
 
-    public void CloseCurrentPage(string pageName)
-    {
-        // Fermer la page actuelle si elle est définie
-        if (currentPage != null && currentPage)
-        {
-            currentPage.SetActive(false);
-            currentPage = null;
-        }
-    }
 
     public void openLvl()
     {
