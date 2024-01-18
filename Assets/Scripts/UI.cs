@@ -32,6 +32,8 @@ public class UI : MonoBehaviour
     private GameObject currentPage;
     [SerializeField] private string pagePrincipale;
 
+    private GameObject _skills;
+
     public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
 
     private void UpdateCoinUI(int coinAmount)
@@ -47,6 +49,13 @@ public class UI : MonoBehaviour
         _upgradeManager.OnCoinValueChanged += UpdateCoinUI;
         _upgradeManager.CollectCoin(0);
     }
+
+    public void SetSkill(GameObject skill)
+    {
+        _skills = skill;
+    }
+
+    public GameObject GetSkill() { return _skills; }
 
     public void SetEnemyCount(int count)
     {
