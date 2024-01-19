@@ -1,20 +1,28 @@
 using System;
 using NaughtyAttributes;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
-using TMPro;
-using UsefulScript;
+using UnityEngine.SceneManagement;
 
 public class SkillsManager : MonoBehaviour
 {
     [SerializeField] private List<SkillStat> _skillsList;
+    [SerializeField] private List<GameObject> _skillPrefab;
     private UpgradeManager _upgradeManager;
+    private CinemachineVirtualCamera _camera;
+    [Header("EditorTest")]
+    [SerializeField] private SkillName _skillNameEditor;
+    [Button] private void UseSkill() => Use(_skillNameEditor);
+    
 
     private void Awake()
     {
         _upgradeManager = gameObject.GetComponent<UpgradeManager>();
+        _camera = GameObject.FindWithTag("VirtualCamera").GetComponent<CinemachineVirtualCamera>();
+        SceneManager.sceneLoaded += SetCamera;
     }
-
+    public void SetCamera(Scene scene, LoadSceneMode sceneMode) => _camera = GameObject.FindWithTag("VirtualCamera").GetComponent<CinemachineVirtualCamera>();
     public SkillStat GetSkillStatByName(SkillName skillName) => _skillsList.Find(x => x.Name == skillName);
     public Skill GetSkillByName(SkillName skillName) => GetSkillStatByName(skillName).GetSkill();
     
@@ -32,10 +40,14 @@ public class SkillsManager : MonoBehaviour
         SkillStat skill = GetSkillStatByName(skillName);
         if (!skill.CanBeUsed() || !skill.IsUnlocked()) return;
         skill.Use();
+        ISkill skillObj = null;
         switch (skillName)
         {
             case SkillName.Cats:
-                //Launch Cats
+                Debug.Log(_camera);
+                CatMovement cat = Instantiate(_skillPrefab[0], _camera.transform.position + new Vector3(-10,4,0), transform.rotation).GetComponent<CatMovement>();
+                cat.SetCamera(_camera);
+                skillObj = cat;
                 break;
             case SkillName.NinjaSoldier:
                 //Launch NinjaSoldier
@@ -46,6 +58,7 @@ public class SkillsManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(skillName), skillName, null);
         }
+        if (skillObj!=null) skillObj.SetStat(skill.GetLevel());
     }
 }
 

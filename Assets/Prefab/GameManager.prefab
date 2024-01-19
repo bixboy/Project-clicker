@@ -94,3 +94,6 @@ MonoBehaviour:
   - _skill: {fileID: 11400000, guid: 756a6ca7e2721074ea4bce9c057ca389, type: 2}
     _level: 0
     _unlocked: 0
+  _skillPrefab:
+  - {fileID: 4082865464398706312, guid: 8d60a7d656906094e9b261da5e612129, type: 3}
+  _skillNameEditor: 0

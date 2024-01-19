@@ -16,6 +16,7 @@ TagManager:
   - PageLvl
   - NavbarPage
   - InfoSkills
+  - VirtualCamera
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - ' soldiers'
   - camera
   - Coins
-  - 
+  - GroundCollision
   - 
   - 
   - 
