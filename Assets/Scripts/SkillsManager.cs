@@ -18,12 +18,12 @@ public class SkillsManager : MonoBehaviour
     public SkillStat GetSkillStatByName(SkillName skillName) => _skillsList.Find(x => x.Name == skillName);
     public Skill GetSkillByName(SkillName skillName) => GetSkillStatByName(skillName).GetSkill();
     
-    public bool Buy(SkillName skillName, int multi = 1)
+    public bool Buy(SkillName skillName)
     {
-        int cost = GetSkillStatByName(skillName).GetCostFromMultiplier(multi);
+        int cost = GetSkillStatByName(skillName).Cost;
         if (_upgradeManager.GetCoinAmount() < cost || GetSkillStatByName(skillName).MaxAmountReached) { return false; }
         _upgradeManager.RemoveCoin(cost);
-        GetSkillStatByName(skillName).Buy(multi);
+        GetSkillStatByName(skillName).Buy();
         return true;
     }
 
@@ -76,20 +76,9 @@ public class SkillStat
     public int Cost => (int)(_skill.BaseCost * (_skill.CostMultiplier*_level + 1));
 
     public bool MaxAmountReached => Amount == NextAmount;
-    
-    public int GetCostFromMultiplier(int multi)
-    {
-        //Can be improved with maths
-        int value = 0;
-        for (int i = 0; i < multi; i++)
-        {
-            value += (int)(_skill.BaseCost * (_skill.CostMultiplier * (_level+i) + 1));
-        }
-        return value;
-    }
 
 
-    public void Buy(int index = 1)
+    public void Buy()
     {
         if (!_unlocked)
         {
@@ -97,7 +86,7 @@ public class SkillStat
             _unlocked = true;
             return;
         }
-        _level+= index;
+        _level+= 1;
     }
 
 }

@@ -9,8 +9,8 @@ public class Unlock : MonoBehaviour
 
     public void Unlocked()
     {
-        _skill = _ui.GetSkill();
-        _skill.GetComponent<InfoSkills>().Unlock();
+        /*_skill = _ui.GetSkill();
+        _skill.GetComponent<InfoSkills>().Unlock();*/
     }
 
 }

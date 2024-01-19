@@ -29,8 +29,8 @@ public class UI : MonoBehaviour
 
     private UpgradeManager _upgradeManager;
     [SerializeField] private TextMeshProUGUI _textGold;
+   [SerializeField] private SkillPageInfos _skillPageInfo;
 
-    private GameObject _skills;
 
     public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
 
@@ -47,12 +47,10 @@ public class UI : MonoBehaviour
         _upgradeManager.CollectCoin(0);
     }
 
-    public void SetSkill(GameObject skill)
+    public void SetSkill(SkillName skillName)
     {
-        _skills = skill;
+        _skillPageInfo.SetSkill(skillName);
     }
-
-    public GameObject GetSkill() => _skills; 
 
     public void SetEnemyCount(int count)
     {

@@ -48,6 +48,16 @@ namespace UsefulScript
             result += charValue;
             return result;
         }
+
+        public static String GetTimeString(int seconds)
+        {
+            if (seconds < 60) return seconds + " s";
+            int min = (int) seconds / 60;
+            seconds -= min * 60;
+            String str = min + " min ";
+            str+= (seconds != 0)? seconds + " s" : "";
+            return str;
+        }
     }
 }
 

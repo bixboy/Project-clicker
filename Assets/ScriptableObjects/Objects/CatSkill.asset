@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillName: 0
   _stringName: Cats
+  _description: 'Launch Cats to motivate the soldiers fighting !
+
+    Boost Soldiers
+    Stats for x Seconds'
   _unlockLevel: 5
+  _cooldown: 30
   _startAmount: 0
   _hasMaxAmount: 0
   _maxAmount: 0
   _amount: 0
   _cost: 100
   _costMultiplier: 10
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 1343300338, guid: e89764b08e7efa246bf4c765c0f799f7, type: 3}

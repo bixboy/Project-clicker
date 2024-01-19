@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4292cb29a784722b4247022a8e76392, type: 3}
-  m_Name: NinjaSoldierSkill
+  m_Name: Necromancier
   m_EditorClassIdentifier: 
-  _skillName: 1
-  _stringName: Ninja Soldier
-  _description: Invoke a strong Ninja Soldier to fight the ennemies, it will explodes
-    when dying !
-  _unlockLevel: 20
-  _cooldown: 120
+  _skillName: 2
+  _stringName: Necromancier
+  _description: Summon a Necromancier, while he is there, your Soldiers can't die
+  _unlockLevel: 30
+  _cooldown: 210
   _startAmount: 0
   _hasMaxAmount: 0
   _maxAmount: 0
   _amount: 0
-  _cost: 1000
-  _costMultiplier: 1
+  _cost: 2000
+  _costMultiplier: 4
   _sprite: {fileID: 1627075666, guid: 6d2992874acc07545a449a93671f0443, type: 3}

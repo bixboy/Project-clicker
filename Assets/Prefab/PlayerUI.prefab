@@ -303,11 +303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillName: 0
+  _skillNameText: {fileID: 3386563903347138161}
   _page: {fileID: 820812737899643579}
-  _locked: {fileID: 0}
-  _ui: {fileID: 0}
-  _unlock: {fileID: 0}
-  _isUnlocked: 0
+  _ui: {fileID: 285225374296108550}
 --- !u!1 &297112004565057006
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,9 +714,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InfoSkills, Assembly-CSharp
-        m_MethodName: Unlock
+      - m_Target: {fileID: 4834557553716944097}
+        m_TargetAssemblyTypeName: SkillPageInfos, Assembly-CSharp
+        m_MethodName: Buy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1578,6 +1576,7 @@ GameObject:
   - component: {fileID: 8427017524062483329}
   - component: {fileID: 6813257721574433114}
   - component: {fileID: 5985262133686414760}
+  - component: {fileID: 4834557553716944097}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1648,6 +1647,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4834557553716944097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922361443060476979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365a319b840812349acd0f32c1133ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillNameText: {fileID: 3116114739790520110}
+  _levelText: {fileID: 1271437354827785677}
+  _descriptionText: {fileID: 1441437629606797380}
+  _cooldownText: {fileID: 5015084611896140224}
+  _icon: {fileID: 6128201631499729529}
+  _locked: {fileID: 5058694990114742805}
 --- !u!1 &957921873712649736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,11 +5739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillName: 0
+  _skillNameText: {fileID: 2861050222920101429}
   _page: {fileID: 820812737899643579}
-  _locked: {fileID: 0}
-  _ui: {fileID: 0}
-  _unlock: {fileID: 0}
-  _isUnlocked: 0
+  _ui: {fileID: 285225374296108550}
 --- !u!1 &3019830732694259372
 GameObject:
   m_ObjectHideFlags: 0
@@ -6370,11 +6385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillName: 0
+  _skillNameText: {fileID: 4494336108515719383}
   _page: {fileID: 820812737899643579}
-  _locked: {fileID: 0}
-  _ui: {fileID: 0}
-  _unlock: {fileID: 0}
-  _isUnlocked: 0
+  _ui: {fileID: 285225374296108550}
 --- !u!1 &3424522119415939066
 GameObject:
   m_ObjectHideFlags: 0
@@ -6505,6 +6518,7 @@ MonoBehaviour:
   _spriteBossBar: {fileID: 0}
   _imageBoss: {fileID: 0}
   _textGold: {fileID: 3615719166328673180}
+  _skillPageInfo: {fileID: 4834557553716944097}
 --- !u!114 &8425631940744897077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6517,7 +6531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c1034bb8f9c6647b3c4fd768b1b14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiSkillPage: {fileID: 0}
+  _uiSkillPage: {fileID: 820812737899643579}
   _uiSkills: []
 --- !u!1 &3431344226026673085
 GameObject:
@@ -7106,11 +7120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillName: 2
+  _skillNameText: {fileID: 5910612475991277275}
   _page: {fileID: 820812737899643579}
-  _locked: {fileID: 0}
-  _ui: {fileID: 0}
-  _unlock: {fileID: 0}
-  _isUnlocked: 0
+  _ui: {fileID: 285225374296108550}
 --- !u!1 &3654274546156593410
 GameObject:
   m_ObjectHideFlags: 0
@@ -13949,7 +13961,7 @@ GameObject:
   - component: {fileID: 1508488491420008400}
   - component: {fileID: 1485785842896729464}
   m_Layer: 5
-  m_Name: couldown
+  m_Name: cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15681,11 +15693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillName: 0
+  _skillNameText: {fileID: 157289632571405210}
   _page: {fileID: 820812737899643579}
-  _locked: {fileID: 0}
-  _ui: {fileID: 0}
-  _unlock: {fileID: 0}
-  _isUnlocked: 0
+  _ui: {fileID: 285225374296108550}
 --- !u!1 &8553375846259392376
 GameObject:
   m_ObjectHideFlags: 0
@@ -17046,7 +17056,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1522675800378527285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2466881038809395595}
+        m_TargetAssemblyTypeName: InfoSkills, Assembly-CSharp
+        m_MethodName: OpenInfoPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2466881038809395595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17060,11 +17082,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillName: 1
+  _skillNameText: {fileID: 1924763435019256794}
   _page: {fileID: 820812737899643579}
-  _locked: {fileID: 0}
-  _ui: {fileID: 0}
-  _unlock: {fileID: 0}
-  _isUnlocked: 0
+  _ui: {fileID: 285225374296108550}
 --- !u!1 &9154483683597161915
 GameObject:
   m_ObjectHideFlags: 0
