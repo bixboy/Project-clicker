@@ -4129,13 +4129,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8123717259751476184, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: _TimeDieClear
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2481241
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_Size.y
+      value: 2.1891956
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.31308794
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.7793379
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6.6666665
+      objectReference: {fileID: 0}
+    - target: {fileID: -2487427649355740783, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.6666665
+      objectReference: {fileID: 0}
     - target: {fileID: 801113925844644161, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.773163
+      value: -4.45
       objectReference: {fileID: 0}
     - target: {fileID: 801113925844644161, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.312817
+      value: -28.89
       objectReference: {fileID: 0}
     - target: {fileID: 801113925844644161, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4172,6 +4212,14 @@ PrefabInstance:
     - target: {fileID: 4172299107738915462, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
       propertyPath: m_Name
       value: NinjaSoldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352761730155796835, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: _damageExplosion
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352761730155796835, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+      propertyPath: _radiusExplosion
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

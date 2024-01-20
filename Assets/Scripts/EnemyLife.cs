@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -145,9 +146,12 @@ public class EnemyLife : MonoBehaviour
         int coinValue = _upgradeManager.GetComponent<LevelManager>().GetLevelLoaded();
 
         GameObject[] soldats = GameObject.FindGameObjectsWithTag("Soldiers");
-        foreach (GameObject soldat in soldats)
+        if (soldats.Length > 0)
         {
-            soldat.GetComponent<MoveSoldats>().SetDestinationActif(false);
+            foreach (GameObject soldat in soldats)
+            {
+                soldat.GetComponent<MoveSoldats>().SetDestinationActif(false);
+            }
         }
         Debug.Log("Die");
         if(_isDieFirst)

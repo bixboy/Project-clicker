@@ -27,12 +27,12 @@ public class SoldiersLife : MonoBehaviour
     // Methodes
     #region EditorParametre
 
-    private void Awake()
+    private void Start()
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _maxHealth = (int)_upgradeManager.GetUpgradeStatByName(StatName.Health).Amount;
         _currentHealth = _maxHealth;
-        _animator = GetComponent<Animator>();
+        _animator = gameObject.GetComponent<Animator>();
     }
 
     private void Reset()
