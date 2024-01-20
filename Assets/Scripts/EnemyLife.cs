@@ -150,7 +150,15 @@ public class EnemyLife : MonoBehaviour
         {
             foreach (GameObject soldat in soldats)
             {
-                soldat.GetComponent<MoveSoldats>().SetDestinationActif(false);
+                if (soldat.GetComponent<SoldiersLife>().GetCurrentHealth() > 0 && soldat.GetComponent<MoveSoldats>() != null)
+                {
+                    soldat.GetComponent<MoveSoldats>().SetDestinationActif(false);
+                }
+
+                if (soldat.GetComponent<SoldiersLife>().GetCurrentHealth() > 0 && soldat.GetComponent<NinjaMove>() != null)
+                {
+                    soldat.GetComponent<NinjaMove>().SetDestinationActif(false);
+                }
             }
         }
         Debug.Log("Die");
