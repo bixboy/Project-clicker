@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UsefulScript;
 
@@ -26,6 +27,11 @@ public class UI : MonoBehaviour
     [SerializeField]
     private Sprite _imageBoss;
     EnemyLife _bossLife;
+
+    [SerializeField] private Slider _sliderTime;
+    [SerializeField] private GameObject _timer;
+    [SerializeField] private int _maxTime;
+    [SerializeField] private Animator _animator;
 
     private UpgradeManager _upgradeManager;
     [SerializeField] private TextMeshProUGUI _textGold;
@@ -75,6 +81,19 @@ public class UI : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (_sliderTime.maxValue == _maxTime && _sliderTime.value >= 0)
+        {
+            _sliderTime.value -= Time.deltaTime;
+            if (_sliderTime.value <= 0 )
+            {
+                Debug.Log("Game Over");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
+    }
+
     private void CheckAllEnemyDie()
     {
         if (_slider.value >= _slider.maxValue)
@@ -83,6 +102,10 @@ public class UI : MonoBehaviour
             _slider.maxValue = _bossLife.CurrentHealth;
             _slider.value = _slider.maxValue;
             _slider.GetComponentInChildren<Image>().color = new Color32(181, 22, 0, 255);
+            _animator.enabled = true;
+            _timer.SetActive(true);
+            _sliderTime.maxValue = _maxTime;
+            _sliderTime.value = _slider.maxValue;
         }
     }
 

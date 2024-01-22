@@ -54,7 +54,7 @@ public class SkillPageInfos : MonoBehaviour
 
     public void Buy()
     {
-        _skillsManager.GetSkillStatByName(_skillName).Buy();
+        _skillsManager.Buy(_skillName);
         if (_skillsManager.GetSkillStatByName(_skillName).IsUnlocked()) _locked.SetActive(false);
     }
 
