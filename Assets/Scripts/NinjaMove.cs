@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.AxisState;
 
-public class NinjaMove : MonoBehaviour
+public class NinjaMove: MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _distStop;

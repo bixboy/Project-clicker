@@ -24,7 +24,25 @@ namespace spawn
 
         private UpgradeManager _upgradeManager;
         [SerializeField] private TextMeshProUGUI _textLimitSoldiers;
+        private List<ISkill> _activeSkills = new List<ISkill>();
 
+        public bool isSkillActive(SkillName skillName)
+        {
+            for (int i = 0; i < _activeSkills.Count; i++)
+            {
+                if (!_activeSkills[i].IsActive())
+                {
+                    _activeSkills.RemoveAt(i);
+                    i--;
+                    continue;
+                }
+                if (_activeSkills[i].GetSkillName() == skillName) return true;
+            }
+            return false;
+        }
+
+        public void AddSkill(ISkill iskill) => _activeSkills.Add(iskill);
+        
         // Methodes
         #region EditorParametre
 
@@ -36,6 +54,7 @@ namespace spawn
         private void Start()
         {
             _soldatsCountMax--;
+            GameObject.FindWithTag("GameManager").GetComponent<SkillsManager>().skillSummoned += AddSkill;
         }
 
         private void Reset()
@@ -59,6 +78,8 @@ namespace spawn
                 Transform spawnPointTransform = transform;
                 GameObject newSoldier = Instantiate(_prefabSoldiers, spawnPointTransform.position, spawnPointTransform.rotation);
                 SoldiersLife soldierLifeComponent = newSoldier.GetComponent<SoldiersLife>();
+                newSoldier.GetComponent<MoveSoldats>().SetInvoker(GetComponent<InvokeSoldats>());
+                soldierLifeComponent.SetInvoker(GetComponent<InvokeSoldats>());
 
                 if (soldierLifeComponent != null)
                 {

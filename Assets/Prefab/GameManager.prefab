@@ -96,4 +96,6 @@ MonoBehaviour:
     _unlocked: 0
   _skillPrefab:
   - {fileID: 4082865464398706312, guid: 8d60a7d656906094e9b261da5e612129, type: 3}
+  - {fileID: 4172299107738915462, guid: 245ea090cac60304592ef6c9883992f9, type: 3}
+  - {fileID: 1885275004890643258, guid: 02c3774dc4e842f48bdf97a8c33bfba5, type: 3}
   _skillNameEditor: 0

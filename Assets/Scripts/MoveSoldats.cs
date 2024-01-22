@@ -1,4 +1,5 @@
 using System.Collections;
+using spawn;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,6 +17,9 @@ public class MoveSoldats : MonoBehaviour
     [SerializeField] private int _damage;
     private bool _canAttack = false;
     private UpgradeManager _upgradeManager;
+    private InvokeSoldats _invoker;
+
+    public void SetInvoker(InvokeSoldats invoker) => _invoker = invoker;
 
     private SoldiersLife _soldiersLife;
     private int life;
@@ -90,7 +94,7 @@ public class MoveSoldats : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(_cooldown);
+        yield return new WaitForSeconds(_invoker.isSkillActive(SkillName.Cats)? _cooldown/3 : _cooldown);
         Attack();
     }
 

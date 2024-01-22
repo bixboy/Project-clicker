@@ -22,11 +22,13 @@ public class CatMovement : MonoBehaviour, ISkill
 
     private bool facingRight = true;
     private float[] _bordersX;
+    private float _widthCam;
+    private bool _isActive;
+
     public void SetCamera(CinemachineVirtualCamera cam)
     {
         _camera = cam;
-        float widthCam = Camera.main.aspect * _camera.m_Lens.OrthographicSize;
-        _bordersX = new float[] {_camera.transform.position.x - widthCam, _camera.transform.position.x + widthCam};
+        _widthCam = Camera.main.aspect * _camera.m_Lens.OrthographicSize;
     } 
 
     private void Start()
@@ -36,12 +38,15 @@ public class CatMovement : MonoBehaviour, ISkill
         _rb = GetComponent<Rigidbody2D>();
         _previousAction = CatAction.Run;
         facingRight = true;
+        _isActive = true;
     }
 
     private void Update()
     {
+        _bordersX = new float[] {_camera.transform.position.x - _widthCam, _camera.transform.position.x + _widthCam};
         if (_bornTime + _lifeTime <= Time.time)
         {
+            _isActive = false;
             if (facingRight){Flip();}
             _rb.velocity = new Vector2(-_runSpeed * Time.deltaTime, 0); 
             _animator.SetFloat("VelocityX", 10);
@@ -118,6 +123,8 @@ public class CatMovement : MonoBehaviour, ISkill
                     break;
                 case CatAction.Walking:
                     _dir = Random.Range(0, 2) == 0 ? -1 : 1;
+                    if (transform.position.x - 1 < _bordersX[0]) _dir = 1;
+                    else if (transform.position.x + 1 > _bordersX[1]) _dir = -1;
                     _actionStart = Time.time;
                     _actionLength = Random.Range(1, 6);
                     break;
@@ -151,5 +158,15 @@ public class CatMovement : MonoBehaviour, ISkill
     public void SetStat(int skillLevel)
     {
         _lifeTime = 20 + (10 * skillLevel);
+    }
+
+    public bool IsActive()
+    {
+        return _isActive;
+    }
+
+    public SkillName GetSkillName()
+    {
+        return SkillName.Cats;
     }
 }

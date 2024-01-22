@@ -23,6 +23,9 @@ public class SoldiersLife : MonoBehaviour
 
     [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private Animator _animator;
+    
+    private InvokeSoldats _invoker;
+    public void SetInvoker(InvokeSoldats invoker) => _invoker = invoker;
 
     // Methodes
     #region EditorParametre
@@ -85,6 +88,7 @@ public class SoldiersLife : MonoBehaviour
 
     public bool TakeDamage(int amount)
     {
+        if (_invoker.isSkillActive(SkillName.Necromancier)) return false;
         // Guards
         if (amount < 0)
         {

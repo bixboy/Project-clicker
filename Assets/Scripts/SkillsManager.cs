@@ -14,6 +14,8 @@ public class SkillsManager : MonoBehaviour
     [Header("EditorTest")]
     [SerializeField] private SkillName _skillNameEditor;
     [Button] private void UseSkill() => Use(_skillNameEditor);
+
+    public event Action<ISkill> skillSummoned;
     
 
     private void Awake()
@@ -44,21 +46,23 @@ public class SkillsManager : MonoBehaviour
         switch (skillName)
         {
             case SkillName.Cats:
-                Debug.Log(_camera);
-                CatMovement cat = Instantiate(_skillPrefab[0], _camera.transform.position + new Vector3(-10,4,0), transform.rotation).GetComponent<CatMovement>();
+                CatMovement cat = Instantiate(_skillPrefab[0], _camera.transform.position + new Vector3(-10,4,10), transform.rotation).GetComponent<CatMovement>();
                 cat.SetCamera(_camera);
                 skillObj = cat;
                 break;
             case SkillName.NinjaSoldier:
-                //Launch NinjaSoldier
+                skillObj = Instantiate(_skillPrefab[1], _camera.transform.position + new Vector3(-10,8,10), transform.rotation).GetComponent<ISkill>();
                 break;
             case SkillName.Necromancier:
-                //Launch Necromancier
+                Necromancer necromancer = Instantiate(_skillPrefab[2], _camera.transform.position + new Vector3(-10,10,10), transform.rotation).GetComponent<Necromancer>();
+                necromancer.SetCam(_camera);
+                skillObj = necromancer;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(skillName), skillName, null);
         }
         if (skillObj!=null) skillObj.SetStat(skill.GetLevel());
+        skillSummoned?.Invoke(skillObj);
     }
 }
 
