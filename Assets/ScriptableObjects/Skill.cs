@@ -13,10 +13,6 @@ public class Skill : ScriptableObject
     [SerializeField, TextArea] private String _description;
     [SerializeField] private int _unlockLevel;
     [SerializeField] private int _cooldown;
-    [SerializeField] private float _startAmount;
-    [SerializeField] private bool _hasMaxAmount;
-    [SerializeField, ShowIf("_hasMaxAmount")] private float _maxAmount;
-    [SerializeField] private float _amount;
     [SerializeField] private int _cost;
     [SerializeField] private float _costMultiplier;
     [SerializeField] private Sprite _sprite;
@@ -30,10 +26,6 @@ public class Skill : ScriptableObject
     public int UnlockLevel => _unlockLevel;
     public int Cooldown => _cooldown; 
     public float CostMultiplier => _costMultiplier;
-
-    public float MaxAmount => _hasMaxAmount ? _maxAmount : Mathf.Infinity;
-    public float StartAmount => _startAmount;
-    public float Amount => _amount;
     public Sprite Sprite => _sprite;
 
     

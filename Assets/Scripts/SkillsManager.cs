@@ -31,7 +31,7 @@ public class SkillsManager : MonoBehaviour
     public bool Buy(SkillName skillName)
     {
         int cost = GetSkillStatByName(skillName).Cost;
-        if (_upgradeManager.GetCoinAmount() < cost || GetSkillStatByName(skillName).MaxAmountReached) { return false; }
+        if (_upgradeManager.GetCoinAmount() < cost) { return false; }
         _upgradeManager.RemoveCoin(cost);
         GetSkillStatByName(skillName).Buy();
         return true;
@@ -85,14 +85,7 @@ public class SkillStat
     public float Progress() => Mathf.Clamp((_lastTimeUsed - Time.time) / _skill.Cooldown ,0,1);
 
     public void Use() => _lastTimeUsed = Time.time;
-    
-    public float Amount => Mathf.Min(_skill.StartAmount + _level * _skill.Amount, _skill.MaxAmount);
-
-    public float NextAmount => Mathf.Min(_skill.StartAmount + (_level + 1) * _skill.Amount, _skill.MaxAmount);
-    public float GetNextAmountFromMultiplier(int multi) => _skill.StartAmount + (_level + multi) * _skill.Amount;
     public int Cost => (int)(_skill.BaseCost * (_skill.CostMultiplier*_level + 1));
-
-    public bool MaxAmountReached => Amount == NextAmount;
 
 
     public void Buy()
