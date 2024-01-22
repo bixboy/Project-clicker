@@ -40,6 +40,12 @@ public class UpgradeManager : MonoBehaviour
         GetUpgradeStatByName(statName).Buy(multi);
         return true;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1)) CollectCoin(100);
+        if (Input.GetKeyDown(KeyCode.F2)) CollectCoin(1000);
+    }
 }
 
 [Serializable]

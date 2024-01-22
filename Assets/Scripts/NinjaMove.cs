@@ -167,4 +167,14 @@ public class NinjaMove : MonoBehaviour, ISkill
     {
         _ninjaLife.NinjaLife(skillLevel);
     }
+
+    public bool IsActive()
+    {
+        return false;
+    }
+
+    public SkillName GetSkillName()
+    {
+        return SkillName.NinjaSoldier;
+    }
 }

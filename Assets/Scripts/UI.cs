@@ -29,8 +29,10 @@ public class UI : MonoBehaviour
 
     private UpgradeManager _upgradeManager;
     [SerializeField] private TextMeshProUGUI _textGold;
-   [SerializeField] private SkillPageInfos _skillPageInfo;
+    [SerializeField] private SkillPageInfos _skillPageInfo;
 
+    [SerializeField] private TextMeshProUGUI _textLvl;
+    [SerializeField] private List<LevelChoiceUI> _levelChoices;
 
     public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
 
@@ -45,6 +47,12 @@ public class UI : MonoBehaviour
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _upgradeManager.OnCoinValueChanged += UpdateCoinUI;
         _upgradeManager.CollectCoin(0);
+        LevelManager levelManager = _upgradeManager.GetComponent<LevelManager>();
+        _textLvl.text = "Level " + levelManager.GetLevelLoaded();
+        foreach (LevelChoiceUI levelChoiceUI in _levelChoices)
+        {
+            levelChoiceUI.SetUI(levelManager);
+        }
     }
 
     public void SetSkill(SkillName skillName)

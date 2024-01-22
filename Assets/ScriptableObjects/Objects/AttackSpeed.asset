@@ -19,5 +19,5 @@ MonoBehaviour:
   _maxAmount: 25
   _amount: 0.2
   _cost: 15
-  _costMultiplier: 1
+  _costMultiplier: 2
   _sprite: {fileID: 876142895, guid: f6ad929e655110543b13dfe7a28526b9, type: 3}

@@ -41,6 +41,7 @@ public class MoveSoldats : MonoBehaviour
         _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount;
         _animator = GetComponent<Animator>();
         _soldiersLife = GetComponent<SoldiersLife>();
+        _animator.SetFloat("AttackSpeed",1+ _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount/10);
     }
 
     private void Update()
