@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: -953439276932183842}
   - component: {fileID: -2487427649355740783}
   - component: {fileID: -4910583892272013902}
-  - component: {fileID: -8123717259751476184}
   - component: {fileID: 4352761730155796835}
+  - component: {fileID: -8123717259751476184}
   - component: {fileID: 7444198317163586556}
   m_Layer: 6
   m_Name: NinjaSoldier
@@ -197,26 +197,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.3333333
---- !u!114 &-8123717259751476184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4172299107738915462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f48a3aaa36db64469e9b345a80fcbe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 0
-  _isDead: 0
-  _TimeDieClear: 3
-  _onDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  _animator: {fileID: 7444198317163586556}
 --- !u!114 &4352761730155796835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +219,27 @@ MonoBehaviour:
   _baseCooldown: 4
   _damageExplosion: 100000
   _radiusExplosion: 5
-  _destActive: 0
+  _secondAttack: 0
+--- !u!114 &-8123717259751476184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172299107738915462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f48a3aaa36db64469e9b345a80fcbe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentHealth: 0
+  _isDead: 0
+  _TimeDieClear: 3
+  _onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  _animator: {fileID: 7444198317163586556}
 --- !u!95 &7444198317163586556
 Animator:
   serializedVersion: 5

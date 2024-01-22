@@ -182,7 +182,7 @@ MonoBehaviour:
     m_Bits: 8
   _baseCooldown: 3
   _damage: 10
-  _destActive: 0
+  _destActive: 1
 --- !u!114 &6990822093990025071
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,21 +24,7 @@ public class InfoSkills : MonoBehaviour
     public void OpenInfoPage()
     {
         _ui.SetSkill(_skillName);
-        _page.SetActive(true); 
-    }
-
-    public void equiped()
-    {
-        if (_skillsManager.GetSkillStatByName(_skillName).IsUnlocked())
-        {
-            CloseInfoPage();
-            Debug.Log("Le skill '" + _skillStat.GetSkill().StringName + "' est �quiper");
-        }
-    }
-
-
-    public void CloseInfoPage()
-    {
-        _page.SetActive(false);
+        _page.SetActive(true);
+        _page.GetComponentInChildren<SkillPageInfos>().SetSkill(_skillName);
     }
 }
