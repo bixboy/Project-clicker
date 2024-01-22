@@ -18,7 +18,7 @@ MonoBehaviour:
 
     Boost Soldiers
     Stats for x Seconds'
-  _unlockLevel: 5
+  _unlockLevel: 0
   _cooldown: 30
   _startAmount: 0
   _hasMaxAmount: 0

@@ -12,13 +12,13 @@ public class SkillPageInfos : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
     [SerializeField] private TextMeshProUGUI _cooldownText;
+    [SerializeField] private TextMeshProUGUI _price;
     [SerializeField] private Image _icon;
     [SerializeField] private GameObject _locked;
     private GameObject _skillObject;
     private SkillsManager _skillsManager;
     private Skill _skill;
-    [SerializeField] private SkillsButton _skillsButton;
-    private SkillName _skillName;
+    [SerializeField] private SkillName _skillName;
 
     public void SetSkill(SkillName skillName)
     {
@@ -31,6 +31,7 @@ public class SkillPageInfos : MonoBehaviour
         _levelText.text = "Niv " + _skillsManager.GetSkillStatByName(skillName).GetLevel();
         _locked.SetActive(!_skillsManager.GetSkillStatByName(skillName).IsUnlocked());
         _skillName = skillName;
+        _price.text = "Unlock : " + _skillsManager.GetSkillStatByName(skillName).Cost;
     }
 
     private void SetGameObject(GameObject gameObject)
@@ -53,8 +54,8 @@ public class SkillPageInfos : MonoBehaviour
 
     public void Buy()
     {
-        _skillsManager.GetSkillStatByName(_skill.Name).Buy();
-        if (_locked.activeSelf) _locked.SetActive(false);
+        _skillsManager.GetSkillStatByName(_skillName).Buy();
+        if (_skillsManager.GetSkillStatByName(_skillName).IsUnlocked()) _locked.SetActive(false);
     }
 
     public void CloseInfoPage()

@@ -14,12 +14,15 @@ public class SoldiersLife : MonoBehaviour
     private int _maxHealth;
     [SerializeField] private int _currentHealth;
 
-    [SerializeField] public bool _isDead;
+    public bool _isDead;
     private UpgradeManager _upgradeManager;
 
     [SerializeField] private float _TimeDieClear;
     private float _currentCountdown;
     private bool _isDieFirstTime = false;
+
+    [SerializeField] private bool _isNinja;
+    private int _ninjaHealth;
 
     [SerializeField] private UnityEvent _onDamage;
     [SerializeField] private Animator _animator;
@@ -27,14 +30,26 @@ public class SoldiersLife : MonoBehaviour
     private InvokeSoldats _invoker;
     public void SetInvoker(InvokeSoldats invoker) => _invoker = invoker;
 
+    public void NinjaLife(int health) { _ninjaHealth = health; }
+
     // Methodes
     #region EditorParametre
 
     private void Start()
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
-        _maxHealth = (int)_upgradeManager.GetUpgradeStatByName(StatName.Health).Amount;
-        _currentHealth = _maxHealth;
+        if (!_isNinja)
+        {
+            _maxHealth = (int)_upgradeManager.GetUpgradeStatByName(StatName.Health).Amount;
+            _currentHealth = _maxHealth;
+        }
+        else if (_isNinja)
+        {
+
+            _currentHealth = 400 + (1 * _ninjaHealth);
+            Debug.Log(_ninjaHealth);
+        }
+
         _animator = gameObject.GetComponent<Animator>();
     }
 

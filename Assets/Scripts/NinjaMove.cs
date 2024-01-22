@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Cinemachine.AxisState;
 
-public class NinjaMove: MonoBehaviour
+public class NinjaMove : MonoBehaviour, ISkill
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _distStop;
@@ -161,5 +161,10 @@ public class NinjaMove: MonoBehaviour
             i++;
             j++;
         }
+    }
+
+    public void SetStat(int skillLevel)
+    {
+        _ninjaLife.NinjaLife(skillLevel);
     }
 }

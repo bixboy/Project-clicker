@@ -18,6 +18,7 @@ TagManager:
   - InfoSkills
   - VirtualCamera
   - skills
+  - transition
   layers:
   - Default
   - TransparentFX
