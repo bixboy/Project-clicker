@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int _levelLoaded;
     [SerializeField, Scene] private string _levelScene;
+    [SerializeField] private AudioSource _audioSource;
     private int _maxLevelUnlocked;
 
     public int GetLevelLoaded() => _levelLoaded;
@@ -18,6 +19,12 @@ public class LevelManager : MonoBehaviour
     {
         _maxLevelUnlocked = 1;
         _levelLoaded = 1;
+        SceneManager.sceneLoaded += LaunchSound;
+    }
+
+    private void LaunchSound(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg0==SceneManager.GetSceneByName(_levelScene)) _audioSource.Play();
     }
 
     public void BossKilled()
