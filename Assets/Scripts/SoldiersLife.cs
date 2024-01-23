@@ -103,7 +103,10 @@ public class SoldiersLife : MonoBehaviour
 
     public bool TakeDamage(int amount)
     {
-        if (_invoker.isSkillActive(SkillName.Necromancier)) return false;
+        if (!_isNinja)
+        {
+            if (_invoker.isSkillActive(SkillName.Necromancier)) return false;
+        }
         // Guards
         if (amount < 0)
         {

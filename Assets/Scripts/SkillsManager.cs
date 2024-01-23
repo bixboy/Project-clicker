@@ -51,7 +51,7 @@ public class SkillsManager : MonoBehaviour
                 skillObj = cat;
                 break;
             case SkillName.NinjaSoldier:
-                skillObj = Instantiate(_skillPrefab[1], _camera.transform.position + new Vector3(-10,8,10), transform.rotation).GetComponent<ISkill>();
+                skillObj = Instantiate(_skillPrefab[1], _camera.transform.position + new Vector3(-10,5,10), transform.rotation).GetComponent<ISkill>();
                 break;
             case SkillName.Necromancier:
                 Necromancer necromancer = Instantiate(_skillPrefab[2], _camera.transform.position + new Vector3(-10,10,10), transform.rotation).GetComponent<Necromancer>();
