@@ -123,7 +123,8 @@ public class NinjaMove : MonoBehaviour, ISkill
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
