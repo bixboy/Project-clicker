@@ -21,10 +21,15 @@ public class SkillsManager : MonoBehaviour
     private void Awake()
     {
         _upgradeManager = gameObject.GetComponent<UpgradeManager>();
-        _camera = GameObject.FindWithTag("VirtualCamera").GetComponent<CinemachineVirtualCamera>();
+        GameObject cam = GameObject.FindWithTag("VirtualCamera");
+        if (cam!=null) _camera = cam.GetComponent<CinemachineVirtualCamera>();
         SceneManager.sceneLoaded += SetCamera;
     }
-    public void SetCamera(Scene scene, LoadSceneMode sceneMode) => _camera = GameObject.FindWithTag("VirtualCamera").GetComponent<CinemachineVirtualCamera>();
+    public void SetCamera(Scene scene, LoadSceneMode sceneMode)
+    {
+        GameObject cam = GameObject.FindWithTag("VirtualCamera");
+        if (cam!=null) _camera = cam.GetComponent<CinemachineVirtualCamera>();
+    }
     public SkillStat GetSkillStatByName(SkillName skillName) => _skillsList.Find(x => x.Name == skillName);
     public Skill GetSkillByName(SkillName skillName) => GetSkillStatByName(skillName).GetSkill();
     
@@ -72,7 +77,7 @@ public class SkillStat
     [SerializeField, Expandable] private Skill _skill;
     [SerializeField] private int _level;
     [SerializeField] private bool _unlocked;
-    private float _lastTimeUsed;
+    [SerializeField] private float _lastTimeUsed;
 
     public Skill GetSkill() => _skill;
     public int GetLevel() => _level;
@@ -80,9 +85,9 @@ public class SkillStat
 
     public bool IsUnlocked() => _unlocked;
 
-    public bool CanBeUsed() => _unlocked && _lastTimeUsed <= Time.time + _skill.Cooldown;
+    public bool CanBeUsed() => _lastTimeUsed + _skill.Cooldown <= Time.time;
 
-    public float Progress() => Mathf.Clamp((_lastTimeUsed - Time.time) / _skill.Cooldown ,0,1);
+    public float Progress() => Mathf.Clamp((_lastTimeUsed + _skill.Cooldown - Time.time) / _skill.Cooldown ,0,1);
 
     public void Use() => _lastTimeUsed = Time.time;
     public int Cost => (int)(_skill.BaseCost * (_skill.CostMultiplier*_level + 1));
@@ -92,7 +97,7 @@ public class SkillStat
     {
         if (!_unlocked)
         {
-            _lastTimeUsed = 0;
+            _lastTimeUsed = -_skill.Cooldown;
             _unlocked = true;
             return;
         }

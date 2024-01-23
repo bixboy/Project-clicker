@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class SkillsButton : MonoBehaviour
 {
     [SerializeField] private GameObject _gameObject;
     [SerializeField] private GameObject _back;
+    [SerializeField] private Image _loadingImage;
     private Image _skillIcon;
     private SkillName _skillName;
     private SkillName _skillNameTemp;
@@ -21,6 +23,13 @@ public class SkillsButton : MonoBehaviour
         _skillIcon = GetComponent<Image>();
         _selected = true;
         _haveSkill = false;
+        _loadingImage.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        _loadingImage.gameObject.SetActive(!_skillsManager.GetSkillStatByName(_skillName).CanBeUsed());
+        _loadingImage.fillAmount = _skillsManager.GetSkillStatByName(_skillName).Progress();
     }
 
     public void SetSelected() { _selected = false; }
