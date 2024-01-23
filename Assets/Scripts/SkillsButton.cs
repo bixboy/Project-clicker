@@ -65,6 +65,7 @@ public class SkillsButton : MonoBehaviour
             _skill = _skillsManager.GetSkillByName(_skillName);
             _skillIcon.sprite = _skill.Sprite;
             _haveSkill = true;
+            GetComponent<Image>().color = Color.white;
             foreach (var skills in GameObject.FindGameObjectsWithTag("skills"))
             {
                 skills.GetComponent<SkillsButton>().Close();
