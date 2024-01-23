@@ -5025,10 +5025,6 @@ PrefabInstance:
       propertyPath: _lock
       value: 
       objectReference: {fileID: 785917991}
-    - target: {fileID: 629421356416315018, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
-      propertyPath: m_TagString
-      value: skills
-      objectReference: {fileID: 0}
     - target: {fileID: 645771763196745943, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_Name
       value: nameSkill
@@ -5212,14 +5208,6 @@ PrefabInstance:
     - target: {fileID: 1814539407935056760, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.7983856
-      objectReference: {fileID: 0}
-    - target: {fileID: 1816032123306289652, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
-      propertyPath: m_TagString
-      value: skills
-      objectReference: {fileID: 0}
-    - target: {fileID: 1826048040702287830, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
-      propertyPath: m_TagString
-      value: skills
       objectReference: {fileID: 0}
     - target: {fileID: 1846584738814821420, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -6144,10 +6132,6 @@ PrefabInstance:
     - target: {fileID: 7477489849378463473, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7569885895909237780, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
-      propertyPath: m_TagString
-      value: skills
       objectReference: {fileID: 0}
     - target: {fileID: 7695051485085205187, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchorMax.y
