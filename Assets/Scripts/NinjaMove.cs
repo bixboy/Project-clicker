@@ -165,6 +165,7 @@ public class NinjaMove : MonoBehaviour, ISkill
 
     public void SetStat(int skillLevel)
     {
+        if (_ninjaLife==null) _ninjaLife = GetComponent<SoldiersLife>();
         _ninjaLife.NinjaLife(skillLevel);
     }
 

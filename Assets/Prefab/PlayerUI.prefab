@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2399a391d60b9bc409c1b9c6705c3218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillName: 0
+  _skillName: 3
   _skillNameText: {fileID: 3386563903347138161}
   _page: {fileID: 820812737899643579}
   _ui: {fileID: 285225374296108550}
@@ -4456,7 +4456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2399a391d60b9bc409c1b9c6705c3218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillName: 0
+  _skillName: 3
   _skillNameText: {fileID: 2861050222920101429}
   _page: {fileID: 820812737899643579}
   _ui: {fileID: 285225374296108550}
@@ -4991,7 +4991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2399a391d60b9bc409c1b9c6705c3218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillName: 0
+  _skillName: 3
   _skillNameText: {fileID: 4494336108515719383}
   _page: {fileID: 820812737899643579}
   _ui: {fileID: 285225374296108550}

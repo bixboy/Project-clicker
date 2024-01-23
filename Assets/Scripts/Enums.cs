@@ -16,4 +16,5 @@ public enum SkillName
     Cats = 0,
     NinjaSoldier = 1,
     Necromancier = 2,
+    ComingSoon = 3,
 }

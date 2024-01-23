@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4292cb29a784722b4247022a8e76392, type: 3}
-  m_Name: Necromancier
+  m_Name: ComingSoon
   m_EditorClassIdentifier: 
-  _skillName: 2
-  _stringName: Necromancier
-  _description: Summon a Necromancier, while he is there, your Soldiers can't die
-  _unlockLevel: 30
-  _cooldown: 210
-  _cost: 2000
-  _costMultiplier: 4
-  _sprite: {fileID: 21300000, guid: b6a15a37f67afb04cae1f2520efea192, type: 3}
+  _skillName: 3
+  _stringName: Coming Soon
+  _description: Coming Soon
+  _unlockLevel: 1
+  _cooldown: 30
+  _cost: 100
+  _costMultiplier: 10
+  _sprite: {fileID: 21300000, guid: b419ed558d70c104d9ae1d7f73bb542b, type: 3}
