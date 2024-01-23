@@ -9,6 +9,7 @@ public class SkillsButton : MonoBehaviour
     [SerializeField] private GameObject _back;
     private Image _skillIcon;
     private SkillName _skillName;
+    private SkillName _skillNameTemp;
     private Skill _skill;
     private SkillsManager _skillsManager;
     private bool _selected;
@@ -28,9 +29,7 @@ public class SkillsButton : MonoBehaviour
     {
         _gameObject.SetActive(true);
         _back.SetActive(true);
-        Debug.Log("ouiii");
-        _skillName = skillName;
-        Debug.Log(_skillName);
+        _skillNameTemp = skillName;
     }
     public void CloseAllButton()
     {
@@ -53,6 +52,7 @@ public class SkillsButton : MonoBehaviour
         if (!_selected) 
         {
             if (_skillsManager == null) _skillsManager = GameObject.FindWithTag("GameManager").GetComponent<SkillsManager>();
+            _skillName = _skillNameTemp;
             _skill = _skillsManager.GetSkillByName(_skillName);
             _skillIcon.sprite = _skill.Sprite;
             _haveSkill = true;

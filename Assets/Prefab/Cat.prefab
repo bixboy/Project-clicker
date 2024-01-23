@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
-  _speed: 50
-  _runSpeed: 150
+  _speed: 200
+  _runSpeed: 500
   _lifeTime: 2
 --- !u!50 &7099853284105976014
 Rigidbody2D:
