@@ -5013,6 +5013,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 492767801105871923, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00025177002
+      objectReference: {fileID: 0}
     - target: {fileID: 592094554513966142, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_Color.a
       value: 0.64705884
@@ -5293,6 +5297,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2241395639942699184, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.0686035
+      objectReference: {fileID: 0}
     - target: {fileID: 2271866048075043087, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_Color.a
       value: 0.6313726
@@ -5544,6 +5552,10 @@ PrefabInstance:
     - target: {fileID: 3661351300642268161, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.16748047
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666986743462216965, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.281006
       objectReference: {fileID: 0}
     - target: {fileID: 3680640501345747166, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_TagString
@@ -6368,6 +6380,10 @@ PrefabInstance:
     - target: {fileID: 8963064425454420043, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8980099163481053161, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00018310547
       objectReference: {fileID: 0}
     - target: {fileID: 9000758929595616582, guid: 02bab7322d0da5946a786d94698a2d6a, type: 3}
       propertyPath: m_AnchorMax.y
