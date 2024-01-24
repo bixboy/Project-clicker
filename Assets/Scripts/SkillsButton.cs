@@ -28,7 +28,7 @@ public class SkillsButton : MonoBehaviour
 
     private void Update()
     {
-        if (_skillName == null) return;
+        if (!_haveSkill) return;
         _loadingImage.gameObject.SetActive(!_skillsManager.GetSkillStatByName(_skillName).CanBeUsed());
         _loadingImage.fillAmount = _skillsManager.GetSkillStatByName(_skillName).Progress();
     }

@@ -15,6 +15,7 @@ public class NinjaMove : MonoBehaviour, ISkill
     [SerializeField] private int _damageExplosion;
     [SerializeField] private float _radiusExplosion;
     private float _cooldown;
+    private int _skillLevel;
 
     private UpgradeManager _upgradeManager;
     private SoldiersLife _ninjaLife;
@@ -35,8 +36,8 @@ public class NinjaMove : MonoBehaviour, ISkill
     void Start()
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
-        _damage = (int)_upgradeManager.GetUpgradeStatByName(StatName.AttackDamage).Amount;
-        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount;
+        _damage = (int)_upgradeManager.GetUpgradeStatByName(StatName.AttackDamage).Amount * (_skillLevel + 1);
+        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount * (_skillLevel + 1);
         _animator = GetComponent<Animator>();
         _ninjaLife = GetComponent<SoldiersLife>();
         GetComponent<CircleCollider2D>().radius = _radiusExplosion;
@@ -168,6 +169,7 @@ public class NinjaMove : MonoBehaviour, ISkill
     {
         if (_ninjaLife==null) _ninjaLife = GetComponent<SoldiersLife>();
         _ninjaLife.NinjaLife(skillLevel);
+        _skillLevel = skillLevel;
     }
 
     public bool IsActive()

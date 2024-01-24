@@ -45,9 +45,8 @@ public class SoldiersLife : MonoBehaviour
         }
         else if (_isNinja)
         {
-
-            _currentHealth = 400 + (400 * _skillLevel);
-            Debug.Log(_skillLevel);
+            _maxHealth = (int)_upgradeManager.GetUpgradeStatByName(StatName.Health).Amount  * (_skillLevel + 1);
+            _currentHealth = _maxHealth;
         }
 
         _animator = gameObject.GetComponent<Animator>();
