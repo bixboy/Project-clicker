@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,37 +9,34 @@ using UsefulScript;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField] private GameObject _settings;
-    [SerializeField] private GameObject _pageLevel;
-    [SerializeField] private GameObject _pageUpgrade;
-    [SerializeField] private GameObject _pageSkills;
+    [SerializeField, Foldout("Settings")] private GameObject _settings;
+    [SerializeField, Foldout("Settings")] private Image _spriteRenderer;
+    [SerializeField, Foldout("Settings")] private Sprite _spriteRendererOpen;
+    [SerializeField, Foldout("Settings")] private Sprite _spriteRendererClose;
 
-    [SerializeField]
-    private Image _spriteRenderer;
-    [SerializeField]
-    private Sprite _spriteRendererOpen;
-    [SerializeField]
-    private Sprite _spriteRendererClose;
+    [SerializeField, Foldout("Level")] private GameObject _pageLevel;
+    [SerializeField, Foldout("Level")] private TextMeshProUGUI _textLvl;
+    [SerializeField, Foldout("Level")] private List<LevelChoiceUI> _levelChoices;
 
-    [SerializeField]
-    private Slider _slider;
-    [SerializeField]
-    private Image _spriteBossBar;
-    [SerializeField]
-    private Sprite _imageBoss;
-    EnemyLife _bossLife;
+    [SerializeField, Foldout("Upgrades")] private GameObject _pageUpgrade;
 
-    [SerializeField] private Slider _sliderTime;
-    [SerializeField] private GameObject _timer;
-    [SerializeField] private int _maxTime;
-    [SerializeField] private Animator _animator;
+    [SerializeField, Foldout("Skills")] private GameObject _pageSkills;
+    [SerializeField, Foldout("Skills")] private SkillPageInfos _skillPageInfo;
 
-    private UpgradeManager _upgradeManager;
+    [SerializeField, Foldout("Boss")] private Slider _slider;
+    [SerializeField, Foldout("Boss")] private Image _spriteBossBar;
+    [SerializeField, Foldout("Boss")] private Sprite _imageBoss;
+    [SerializeField, Foldout("Boss")] private transition _animeBoss;
+
+    [SerializeField, Foldout("Timer")] private Slider _sliderTime;
+    [SerializeField, Foldout("Timer")] private GameObject _timer;
+    [SerializeField, Foldout("Timer")] private int _maxTime;
+    [SerializeField, Foldout("Timer")] private Animator _animator;
+
     [SerializeField] private TextMeshProUGUI _textGold;
-    [SerializeField] private SkillPageInfos _skillPageInfo;
-
-    [SerializeField] private TextMeshProUGUI _textLvl;
-    [SerializeField] private List<LevelChoiceUI> _levelChoices;
+    private UpgradeManager _upgradeManager;
+    private EnemyLife _bossLife;
+    private LevelManager _levelManager;
 
     public void SetEnemyLife(EnemyLife bossLife) => _bossLife = bossLife;
 
@@ -53,11 +51,11 @@ public class UI : MonoBehaviour
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _upgradeManager.OnCoinValueChanged += UpdateCoinUI;
         _upgradeManager.CollectCoin(0);
-        LevelManager levelManager = _upgradeManager.GetComponent<LevelManager>();
-        _textLvl.text = "Level " + levelManager.GetLevelLoaded();
+        _levelManager = _upgradeManager.GetComponent<LevelManager>();
+        _textLvl.text = "Level " + _levelManager.GetLevelLoaded();
         foreach (LevelChoiceUI levelChoiceUI in _levelChoices)
         {
-            levelChoiceUI.SetUI(levelManager);
+            levelChoiceUI.SetUI(_levelManager);
         }
     }
 
@@ -106,6 +104,7 @@ public class UI : MonoBehaviour
             _timer.SetActive(true);
             _sliderTime.maxValue = _maxTime;
             _sliderTime.value = _slider.maxValue;
+            _animeBoss.SetUiTransitionBoss(_bossLife.GetComponent<SpriteRenderer>().sprite, _bossLife.name, _levelManager.GetLevelLoaded());
         }
     }
 

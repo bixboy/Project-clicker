@@ -23,7 +23,7 @@ public class transition : MonoBehaviour
     private List<TextMeshProUGUI> _textLvl;
 
     void Start()
-    {   
+    {
         if (!_animBossEntrance)
         {
             _animator = GetComponent<Animator>();
@@ -34,13 +34,14 @@ public class transition : MonoBehaviour
         }
     }
 
-    private void SetUiTransitionBoss(TextMeshProUGUI nameBoss, Sprite imageBoss, int lvlBoss)
+    public void SetUiTransitionBoss(Sprite imageBoss, string nameBoss, int lvlBoss)
     {
-        _nameBoss.text = nameBoss.name;
+        gameObject.SetActive(true);
+        _nameBoss.text = nameBoss;
         _imageBoss.sprite = imageBoss;
         foreach (var text in _textLvl)
         {
-            text.text = ("/ BOSS LVL" + lvlBoss);
+            text.text = ("/ BOSS LVL " + lvlBoss);
         }
     }
 

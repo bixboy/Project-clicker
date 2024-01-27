@@ -5456,6 +5456,9 @@ MonoBehaviour:
   _animBossEntrance: 1
   _top: {fileID: 3780730899127064910}
   _bottom: {fileID: 6062249300398373008}
+  _imageBoss: {fileID: 0}
+  _nameBoss: {fileID: 0}
+  _textLvl: []
 --- !u!95 &1612734850824556445
 Animator:
   serializedVersion: 5
@@ -5614,6 +5617,7 @@ MonoBehaviour:
   _animator: {fileID: 2595935114050840295}
   _textGold: {fileID: 3615719166328673180}
   _skillPageInfo: {fileID: 4834557553716944097}
+  _animeBoss: {fileID: 763934866304250896}
   _textLvl: {fileID: 3157499645766266382}
   _levelChoices:
   - {fileID: 7661818131480631640}
@@ -11149,6 +11153,9 @@ MonoBehaviour:
   _animBossEntrance: 0
   _top: {fileID: 0}
   _bottom: {fileID: 0}
+  _imageBoss: {fileID: 0}
+  _nameBoss: {fileID: 0}
+  _textLvl: []
 --- !u!95 &392172559994249713
 Animator:
   serializedVersion: 5

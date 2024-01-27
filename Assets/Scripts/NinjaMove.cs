@@ -13,8 +13,7 @@ public class NinjaMove : MonoBehaviour, ISkill
     [SerializeField] private int _damage;
     [SerializeField] private float _baseCooldown;
     [SerializeField] private int _damageExplosion;
-    [SerializeField] private float _radiusExplosion;
-    private float _cooldown;
+    [SerializeField] private float _cooldown;
     private int _skillLevel;
 
     private UpgradeManager _upgradeManager;
@@ -23,8 +22,8 @@ public class NinjaMove : MonoBehaviour, ISkill
     private Transform _destPoint;
     private Animator _animator;
 
-    private bool _destActive = false;
-    [SerializeField] private bool _secondAttack = false;
+    [SerializeField] private bool _destActive = false;
+    private bool _secondAttack = false;
     private bool _canAttack = false;
     private bool _stopMove = false;
     private bool _firstAttack = true;
@@ -37,10 +36,9 @@ public class NinjaMove : MonoBehaviour, ISkill
     {
         _upgradeManager = GameObject.FindWithTag("GameManager").GetComponent<UpgradeManager>();
         _damage = (int)_upgradeManager.GetUpgradeStatByName(StatName.AttackDamage).Amount * (_skillLevel + 1);
-        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount * (_skillLevel + 1);
+        _cooldown = _baseCooldown / _upgradeManager.GetUpgradeStatByName(StatName.AttackSpeed).Amount / (_skillLevel + 1);
         _animator = GetComponent<Animator>();
         _ninjaLife = GetComponent<SoldiersLife>();
-        GetComponent<CircleCollider2D>().radius = _radiusExplosion;
         _enemy = new List<EnemyLife>();
     }
 
@@ -124,44 +122,12 @@ public class NinjaMove : MonoBehaviour, ISkill
         }
     }
 
-
-    private void OnTriggerStay(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            _enemy.Add(collision.GetComponent<EnemyLife>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") && _enemy.Contains(collision.GetComponent<EnemyLife>()))
-        {
-            _enemy.Remove(collision.GetComponent<EnemyLife>());
-        }
-    }
-
     private void Explosion()
     {
         if (_ninjaLife.GetCurrentHealth() <= 0) 
         {
             bool crit = Random.Range(0, 100) < (int)_upgradeManager.GetUpgradeStatByName(StatName.CritChance).Amount;
-            MultipleAttack(crit);
-        }
-    }
-
-    private void MultipleAttack(bool crit)
-    {
-        if (_enemy.Count == 0) { return; }
-        List<EnemyLife> tempEnemy = _enemy;
-        int i = 0;
-        int j = 0;
-        while (i < _enemy.Count && j < 7)
-        {
-            _animator.SetTrigger("Attack");
-            _enemy[i].TakeDamage(crit ? _damageExplosion : _damageExplosion * 2);
-            i++;
-            j++;
+            _destPoint.GetComponent<EnemyLife>().TakeDamage(crit ? _damageExplosion : _damageExplosion * 2);
         }
     }
 
