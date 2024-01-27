@@ -45,19 +45,21 @@ public class transition : MonoBehaviour
         }
     }
 
-    public void ChangeScene()
+    public void ChangeScene(int lvl, LevelManager levelManager)
     {
-        StartCoroutine(LoadTransition());
+        gameObject.GetComponent<Image>().enabled = true;
+        _animator.SetTrigger("Start");
+        StartCoroutine(LoadTransition(lvl, levelManager));
     }
 
     public void Disable()
     {
-        gameObject.SetActive(false);
+        gameObject.GetComponent<Image>().enabled = false;
     }
 
-    private IEnumerator LoadTransition()
+    private IEnumerator LoadTransition(int lvl, LevelManager levelManager)
     {
-        yield return new WaitForSeconds(1f);
-        _animator.SetTrigger("Start");
+        yield return new WaitForSeconds(0.45f);
+        levelManager.LoadLevel(lvl);
     }
 }

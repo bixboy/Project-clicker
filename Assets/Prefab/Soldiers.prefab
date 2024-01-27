@@ -199,6 +199,7 @@ MonoBehaviour:
   _currentHealth: 0
   _isDead: 0
   _TimeDieClear: 5
+  _isNinja: 0
   _onDamage:
     m_PersistentCalls:
       m_Calls:

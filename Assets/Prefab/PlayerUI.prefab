@@ -5602,22 +5602,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings: {fileID: 3019830732694259372}
-  _pageLevel: {fileID: 8904106848990568838}
-  _pageUpgrade: {fileID: 5648397502892297637}
-  _pageSkills: {fileID: 5474149110137767386}
   _spriteRenderer: {fileID: 6030677284946331036}
   _spriteRendererOpen: {fileID: -1043836596, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
   _spriteRendererClose: {fileID: -1860993597, guid: ba0a242b83f7e6643ae52135f66c53dd, type: 3}
-  _slider: {fileID: 5563360871272674765}
-  _spriteBossBar: {fileID: 0}
-  _imageBoss: {fileID: 0}
-  _sliderTime: {fileID: 1944456247843485467}
-  _timer: {fileID: 2908247513786578496}
-  _maxTime: 20
-  _animator: {fileID: 2595935114050840295}
-  _textGold: {fileID: 3615719166328673180}
-  _skillPageInfo: {fileID: 4834557553716944097}
-  _animeBoss: {fileID: 763934866304250896}
+  _pageLevel: {fileID: 8904106848990568838}
   _textLvl: {fileID: 3157499645766266382}
   _levelChoices:
   - {fileID: 7661818131480631640}
@@ -5628,6 +5616,18 @@ MonoBehaviour:
   - {fileID: 3455861650046126163}
   - {fileID: 1299320055465868405}
   - {fileID: 8320518412540384686}
+  _pageUpgrade: {fileID: 5648397502892297637}
+  _pageSkills: {fileID: 5474149110137767386}
+  _skillPageInfo: {fileID: 4834557553716944097}
+  _slider: {fileID: 5563360871272674765}
+  _spriteBossBar: {fileID: 0}
+  _imageBoss: {fileID: 0}
+  _animeBoss: {fileID: 763934866304250896}
+  _sliderTime: {fileID: 1944456247843485467}
+  _timer: {fileID: 2908247513786578496}
+  _maxTime: 20
+  _animator: {fileID: 2595935114050840295}
+  _textGold: {fileID: 3615719166328673180}
 --- !u!114 &8425631940744897077
 MonoBehaviour:
   m_ObjectHideFlags: 0

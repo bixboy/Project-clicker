@@ -41,8 +41,9 @@ public class Coins : MonoBehaviour
 
             _bounceCount++;
         }
-    }
 
+        if (collision.gameObject.CompareTag("Soldiers")) { _upgradeManager.CollectCoin(_valueGold); Destroy(gameObject); }
+    }
     private void OnDestroy()
     {
         _upgradeManager.CollectCoin(_valueGold);

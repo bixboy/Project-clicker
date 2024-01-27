@@ -10,9 +10,11 @@ public class LevelChoiceUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private int _displayedLevel;
     private LevelManager _levelManager;
+    private transition _transition;
 
     public void SetUI(LevelManager levelManager)
     {
+        _transition = GameObject.FindWithTag("transition").GetComponent<transition>();
         _levelManager = levelManager;
         _levelText.text = "Level " + _displayedLevel;
         _locker.SetActive(levelManager.GetMaxLevelUnlocked()<_displayedLevel);
@@ -20,6 +22,6 @@ public class LevelChoiceUI : MonoBehaviour
 
     public void LoadLevel()
     {
-        _levelManager.LoadLevel(_displayedLevel);
+        _transition.ChangeScene(_displayedLevel, _levelManager);
     }
 }
